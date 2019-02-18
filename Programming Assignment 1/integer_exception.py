@@ -2,8 +2,10 @@
 #Programming Assignment 1
 #Integer Exceptions in Python 3.7.0
 #Author: Tejas Advait (ta275)
+#Date of Creation: Feb 12 2019
+#Last updated: Feb 18 2019
 
-
+from common import *
 
 #Integer overflow check using factorials
 def overflow_fac():
@@ -17,12 +19,12 @@ def overflow_fac():
 			fac = fac//i
 
 		if (fac == 1):
-			return "No overflow caused."
+			result.put(("Result of 50000!: No overflow",False))
 		else:
-			return "Overflow caused."
+			result.put(("Result of 50000!: Overflow caused.",False))
 
-	except:
-		return "Programmer error in overflow_fac"
+	except Exception as e:
+		result.put(("Result of 50000!: " + str(e),False))
 
 
 
@@ -30,10 +32,15 @@ def overflow_fac():
 def zerodivision():
 	try:
 		a = int(0)
-		return int(10)//a
+		b = int(10)//a
+		if b == float('inf'):
+			result.put(("Result of 10//0: "+str(b),False))
+		else:
+			result.put(("Result of 10//0: "+str(b),True))
+	except Exception as e:
+		result.put(("Result of 10//0: "+str(e), True))
 
-	except ZeroDivisionError:
-		return "Zero Division Error"
-
-	except:
-		"Programmer error in zerodivision"
+def main():
+	overflow_fac()
+	zerodivision()
+	return result

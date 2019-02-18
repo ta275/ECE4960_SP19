@@ -1,0 +1,320 @@
+
+################################################################################
+Integer Exception Handling
+################################################################################
+
+Result of 50000!: No overflow
+Result of 10//0: integer division or modulo by zero*****IEEE VIOLATION*****
+################################################################################
+Floating-Point Overflow and Underflow
+################################################################################
+
+Result of 171! : (34, 'Result too large')*****IEEE VIOLATION*****Result of 171! (in floating-point) : nan
+Result of 1.2345678909876543e-307 / 10  : 1.234567890987654e-308
+Result of 1.234567890987654e-308 / 10  : 1.23456789098765e-309
+Result of 1.23456789098765e-309 / 10  : 1.2345678909877e-310
+Result of 1.2345678909877e-310 / 10  : 1.234567890988e-311
+Result of 1.234567890988e-311 / 10  : 1.23456789099e-312
+Result of 1.23456789099e-312 / 10  : 1.234567891e-313
+Result of 1.234567891e-313 / 10  : 1.234567891e-314
+Result of 1.234567891e-314 / 10  : 1.23456789e-315
+Result of 1.23456789e-315 / 10  : 1.2345679e-316
+Result of 1.2345679e-316 / 10  : 1.234568e-317
+Result of 1.234568e-317 / 10  : 1.234566e-318
+Result of 1.234566e-318 / 10  : 1.23457e-319
+Result of 1.23457e-319 / 10  : 1.2347e-320
+Result of 1.2347e-320 / 10  : 1.235e-321
+Result of 1.235e-321 / 10  : 1.24e-322
+Result of 1.24e-322 / 10  : 1e-323
+Result of 1e-323 / 10  : 0.0
+Result of 0.0 / 10  : 0.0
+Result of 0.0 / 10  : 0.0
+Result of 0.0 / 10  : 0.0
+Result of 1.2345678909876543e-307 / 10  : 1.234567890987654e-308
+Result of 1.234567890987654e-308 / 10  : 1.23456789098765e-309
+Result of 1.23456789098765e-309 / 10  : 1.2345678909877e-310
+Result of 1.2345678909877e-310 / 10  : 1.234567890988e-311
+Result of 1.234567890988e-311 / 10  : 1.23456789099e-312
+Result of 1.23456789099e-312 / 10  : 1.234567891e-313
+Result of 1.234567891e-313 / 10  : 1.234567891e-314
+Result of 1.234567891e-314 / 10  : 1.23456789e-315
+Result of 1.23456789e-315 / 10  : 1.2345679e-316
+Result of 1.2345679e-316 / 10  : 1.234568e-317
+Result of 1.234568e-317 / 10  : 1.234566e-318
+Result of 1.234566e-318 / 10  : 1.23457e-319
+Result of 1.23457e-319 / 10  : 1.2347e-320
+Result of 1.2347e-320 / 10  : 1.235e-321
+Result of 1.235e-321 / 10  : 1.24e-322
+Result of 1.24e-322 / 10  : 1e-323
+Result of 1e-323 / 10  : 0.0
+Result of 0.0 / 10  : 0.0
+Result of 0.0 / 10  : 0.0
+Result of 0.0 / 10  : 0.0
+Result of 1.2345678909876542e-303 / 1.2345678909876543e-307 : 10000.0
+Result of 1.2345678909876542e-303 / 1.234567890987654e-308 : 100000.00000000001
+Result of 1.2345678909876542e-303 / 1.23456789098765e-309 : 1000000.0000000017
+Result of 1.2345678909876542e-303 / 1.2345678909877e-310 : 9999999.999999817
+Result of 1.2345678909876542e-303 / 1.234567890988e-311 : 99999999.99998216
+Result of 1.2345678909876542e-303 / 1.23456789099e-312 : 999999999.9990213
+Result of 1.2345678909876542e-303 / 1.234567891e-313 : 9999999999.870155
+Result of 1.2345678909876542e-303 / 1.234567891e-314 : 99999999998.70155
+Result of 1.2345678909876542e-303 / 1.23456789e-315 : 999999999987.0155
+Result of 1.2345678909876542e-303 / 1.2345679e-316 : 10000000119928.11
+Result of 1.2345678909876542e-303 / 1.234568e-317 : 100000009203145.45
+Result of 1.2345678909876542e-303 / 1.234566e-318 : 1000001292612646.2
+Result of 1.2345678909876542e-303 / 1.23457e-319 : 9999972906865512.0
+Result of 1.2345678909876542e-303 / 1.2347e-320 : 9.99917258890578e+16
+Result of 1.2345678909876542e-303 / 1.235e-321 : 9.995172919870217e+17
+Result of 1.2345678909876542e-303 / 1.24e-322 : 9.995172919870218e+18
+Result of 1.2345678909876542e-303 / 1e-323 : 1.2493966149837772e+20
+Result of 1.2345678909876542e-303 / 0.0 : float division by zero*****IEEE VIOLATION*****Result of 1.2345678909876542e-303 / 0.0 : float division by zero*****IEEE VIOLATION*****Result of 1.2345678909876542e-303 / 0.0 : float division by zero*****IEEE VIOLATION*****Result of sin(1.23456789012345*1.2345678909876543e-307)/1.2345678909876543e-307 : 1.23456789012345
+Result of sin(1.23456789012345*1.234567890987654e-308)/1.234567890987654e-308 : 1.23456789012345
+Result of sin(1.23456789012345*1.23456789098765e-309)/1.23456789098765e-309 : 1.2345678901234505
+Result of sin(1.23456789012345*1.2345678909877e-310)/1.2345678909877e-310 : 1.2345678901234658
+Result of sin(1.23456789012345*1.234567890988e-311)/1.234567890988e-311 : 1.2345678901233081
+Result of sin(1.23456789012345*1.23456789099e-312)/1.23456789099e-312 : 1.2345678901239208
+Result of sin(1.23456789012345*1.234567891e-313)/1.234567891e-313 : 1.2345678901171027
+Result of sin(1.23456789012345*1.234567891e-314)/1.234567891e-314 : 1.2345678901971413
+Result of sin(1.23456789012345*1.23456789e-315)/1.23456789e-315 : 1.234567891797914
+Result of sin(1.23456789012345*1.2345679e-316)/1.2345679e-316 : 1.2345678706024972
+Result of sin(1.23456789012345*1.234568e-317)/1.234568e-317 : 1.2345680494542766
+Result of sin(1.23456789012345*1.234566e-318)/1.234566e-318 : 1.2345695316533203
+Result of sin(1.23456789012345*1.23457e-319)/1.23457e-319 : 1.2345525852409156
+Result of sin(1.23456789012345*1.2347e-320)/1.2347e-320 : 1.2344937975190076
+Result of sin(1.23456789012345*1.235e-321)/1.235e-321 : 1.236
+Result of sin(1.23456789012345*1.24e-322)/1.24e-322 : 1.24
+Result of sin(1.23456789012345*1e-323)/1e-323 : 1.0
+Result of sin(1.23456789012345*0.0)/0.0 : float division by zero*****IEEE VIOLATION*****Result of sin(1.23456789012345*0.0)/0.0 : float division by zero*****IEEE VIOLATION*****Result of sin(1.23456789012345*0.0)/0.0 : float division by zero*****IEEE VIOLATION*****
+################################################################################
+Floating-Point Operations of INF, NINF, and NAN
+################################################################################
+
+Result of 1/inf : 0.0
+Result of 1/ninf : -0.0
+Result of inf + inf : inf
+Result of -inf + -inf : -inf
+Result of inf + -inf : nan
+Result of -inf + inf : nan
+Result of inf - inf : nan
+Result of -inf - -inf : nan
+Result of inf - -inf : inf
+Result of -inf - inf : -inf
+Result of inf * inf : inf
+Result of -inf * -inf : inf
+Result of inf * -inf : -inf
+Result of -inf * inf : -inf
+Result of inf / inf : nan
+Result of -inf / -inf : nan
+Result of inf / -inf : nan
+Result of -inf / inf : nan
+Result of inf + inf : inf
+Result of 10.000000 + 10.000000 : 20
+Result of inf + 10.000000 : inf
+Result of 10.000000 + inf : inf
+Result of inf - inf : nan
+Result of 10.000000 - 10.000000 : 0
+Result of inf - 10.000000 : inf
+Result of 10.000000 - inf : -inf
+Result of inf * inf : inf
+Result of 10.000000 * 10.000000 : 100
+Result of inf * 10.000000 : inf
+Result of 10.000000 * inf : inf
+Result of inf / inf : nan
+Result of 10.000000 / 10.000000 : 1.0
+Result of inf / 10.000000 : inf
+Result of 10.000000 / inf : 0.0
+Result of -inf + -inf : -inf
+Result of 10.000000 + 10.000000 : 20.0
+Result of -inf + 10.000000 : -inf
+Result of 10.000000 + -inf : -inf
+Result of -inf - -inf : nan
+Result of 10.000000 - 10.000000 : 0.0
+Result of -inf - 10.000000 : -inf
+Result of 10.000000 - -inf : inf
+Result of -inf * -inf : inf
+Result of 10.000000 * 10.000000 : 100.0
+Result of -inf * 10.000000 : -inf
+Result of 10.000000 * -inf : -inf
+Result of -inf / -inf : nan
+Result of 10.000000 / 10.000000 : 1.0
+Result of -inf / 10.000000 : -inf
+Result of 10.000000 / -inf : -0.0
+Result of inf + inf : inf
+Result of 0.000000 + 0.000000 : 0.0
+Result of inf + 0.000000 : inf
+Result of 0.000000 + inf : inf
+Result of inf - inf : nan
+Result of 0.000000 - 0.000000 : 0.0
+Result of inf - 0.000000 : inf
+Result of 0.000000 - inf : -inf
+Result of inf * inf : inf
+Result of 0.000000 * 0.000000 : 0.0
+Result of inf * 0.000000 : nan
+Result of 0.000000 * inf : nan
+Result of inf / inf : nan
+Result of 0.000000 / 0.000000 : float division by zero*****IEEE VIOLATION*****Result of inf / 0.000000 : float division by zero*****IEEE VIOLATION*****Result of 0.000000 / inf : 0.0
+Result of -inf + -inf : -inf
+Result of 0.000000 + 0.000000 : 0.0
+Result of -inf + 0.000000 : -inf
+Result of 0.000000 + -inf : -inf
+Result of -inf - -inf : nan
+Result of 0.000000 - 0.000000 : 0.0
+Result of -inf - 0.000000 : -inf
+Result of 0.000000 - -inf : inf
+Result of -inf * -inf : inf
+Result of 0.000000 * 0.000000 : 0.0
+Result of -inf * 0.000000 : nan
+Result of 0.000000 * -inf : nan
+Result of -inf / -inf : nan
+Result of 0.000000 / 0.000000 : float division by zero*****IEEE VIOLATION*****Result of -inf / 0.000000 : float division by zero*****IEEE VIOLATION*****Result of 0.000000 / -inf : -0.0
+Result of 1/(inf) : 0.0
+Result of sin(inf) : math domain error*****IEEE VIOLATION*****Result of exp(inf) : inf
+Result of log(inf) : inf
+Result of 1/(-inf) : -0.0
+Result of sin(-inf) : math domain error*****IEEE VIOLATION*****Result of exp(-inf) : 0.0
+Result of log(-inf) : math domain error*****IEEE VIOLATION*****Result of nan + nan : nan
+Result of 10.000000 + 10.000000 : 20.0
+Result of nan + 10.000000 : nan
+Result of 10.000000 + nan : nan
+Result of nan - nan : nan
+Result of 10.000000 - 10.000000 : 0.0
+Result of nan - 10.000000 : nan
+Result of 10.000000 - nan : nan
+Result of nan * nan : nan
+Result of 10.000000 * 10.000000 : 100.0
+Result of nan * 10.000000 : nan
+Result of 10.000000 * nan : nan
+Result of nan / nan : nan
+Result of 10.000000 / 10.000000 : 1.0
+Result of nan / 10.000000 : nan
+Result of 10.000000 / nan : nan
+Result of nan + nan : nan
+Result of 0.000000 + 0.000000 : 0.0
+Result of nan + 0.000000 : nan
+Result of 0.000000 + nan : nan
+Result of nan - nan : nan
+Result of 0.000000 - 0.000000 : 0.0
+Result of nan - 0.000000 : nan
+Result of 0.000000 - nan : nan
+Result of nan * nan : nan
+Result of 0.000000 * 0.000000 : 0.0
+Result of nan * 0.000000 : nan
+Result of 0.000000 * nan : nan
+Result of nan / nan : nan
+Result of 0.000000 / 0.000000 : float division by zero*****IEEE VIOLATION*****Result of nan / 0.000000 : float division by zero*****IEEE VIOLATION*****Result of 0.000000 / nan : nan
+Result of nan + nan : nan
+Result of inf + inf : inf
+Result of nan + inf : nan
+Result of inf + nan : nan
+Result of nan - nan : nan
+Result of inf - inf : nan
+Result of nan - inf : nan
+Result of inf - nan : nan
+Result of nan * nan : nan
+Result of inf * inf : inf
+Result of nan * inf : nan
+Result of inf * nan : nan
+Result of nan / nan : nan
+Result of inf / inf : nan
+Result of nan / inf : nan
+Result of inf / nan : nan
+Result of nan + nan : nan
+Result of -inf + -inf : -inf
+Result of nan + -inf : nan
+Result of -inf + nan : nan
+Result of nan - nan : nan
+Result of -inf - -inf : nan
+Result of nan - -inf : nan
+Result of -inf - nan : nan
+Result of nan * nan : nan
+Result of -inf * -inf : inf
+Result of nan * -inf : nan
+Result of -inf * nan : nan
+Result of nan / nan : nan
+Result of -inf / -inf : nan
+Result of nan / -inf : nan
+Result of -inf / nan : nan
+Result of 1/(nan) : nan
+Result of sin(nan) : nan
+Result of exp(nan) : nan
+Result of log(nan) : nan
+
+################################################################################
+Signed-Zero Handling
+################################################################################
+
+Result of log(1.2345678901234499e-307) : -706.6829025268564
+Result of log(1.23456789012345e-308) : -708.9854876198505
+Result of log(1.234567890123447e-309) : -711.2880727128445
+Result of log(1.23456789012346e-310) : -713.5906578058385
+Result of log(1.2345678901233e-311) : -715.8932428988327
+Result of log(1.234567890124e-312) : -718.1958279918259
+Result of log(1.2345678901e-313) : -720.498413084828
+Result of log(1.23456789e-314) : -722.8009981779021
+Result of log(1.23456789e-315) : -725.1035832700958
+Result of log(1.2345679e-316) : -727.4061683750956
+Result of log(1.234568e-317) : -729.7087535481282
+Result of log(1.234566e-318) : -732.0113398417027
+Result of log(1.23457e-319) : -734.3139209327678
+Result of log(1.2347e-320) : -736.6164259905463
+Result of log(1.235e-321) : -738.918611003519
+Result of log(1.24e-322) : -741.221196096513
+Result of log(1e-323) : -743.7469247408213
+Result of log(0.0) : math domain error*****IEEE VIOLATION*****Result of log(0.0) : math domain error*****IEEE VIOLATION*****Result of log(0.0) : math domain error*****IEEE VIOLATION*****Result of log(-1.2345678901234499e-307) : math domain error*****IEEE VIOLATION*****Result of log(-1.23456789012345e-308) : math domain error*****IEEE VIOLATION*****Result of log(-1.234567890123447e-309) : math domain error*****IEEE VIOLATION*****Result of log(-1.23456789012346e-310) : math domain error*****IEEE VIOLATION*****Result of log(-1.2345678901233e-311) : math domain error*****IEEE VIOLATION*****Result of log(-1.234567890124e-312) : math domain error*****IEEE VIOLATION*****Result of log(-1.2345678901e-313) : math domain error*****IEEE VIOLATION*****Result of log(-1.23456789e-314) : math domain error*****IEEE VIOLATION*****Result of log(-1.23456789e-315) : math domain error*****IEEE VIOLATION*****Result of log(-1.2345679e-316) : math domain error*****IEEE VIOLATION*****Result of log(-1.234568e-317) : math domain error*****IEEE VIOLATION*****Result of log(-1.234566e-318) : math domain error*****IEEE VIOLATION*****Result of log(-1.23457e-319) : math domain error*****IEEE VIOLATION*****Result of log(-1.2347e-320) : math domain error*****IEEE VIOLATION*****Result of log(-1.235e-321) : math domain error*****IEEE VIOLATION*****Result of log(-1.24e-322) : math domain error*****IEEE VIOLATION*****Result of log(-1e-323) : math domain error*****IEEE VIOLATION*****Result of log(-0.0) : math domain error*****IEEE VIOLATION*****Result of log(-0.0) : math domain error*****IEEE VIOLATION*****Result of log(-0.0) : math domain error*****IEEE VIOLATION*****Result of sin(1.2345678901234499e-307) / 1.2345678901234499e-307 : 1.0
+Result of sin(1.23456789012345e-308) / 1.23456789012345e-308 : 1.0
+Result of sin(1.234567890123447e-309) / 1.234567890123447e-309 : 1.0
+Result of sin(1.23456789012346e-310) / 1.23456789012346e-310 : 1.0
+Result of sin(1.2345678901233e-311) / 1.2345678901233e-311 : 1.0
+Result of sin(1.234567890124e-312) / 1.234567890124e-312 : 1.0
+Result of sin(1.2345678901e-313) / 1.2345678901e-313 : 1.0
+Result of sin(1.23456789e-314) / 1.23456789e-314 : 1.0
+Result of sin(1.23456789e-315) / 1.23456789e-315 : 1.0
+Result of sin(1.2345679e-316) / 1.2345679e-316 : 1.0
+Result of sin(1.234568e-317) / 1.234568e-317 : 1.0
+Result of sin(1.234566e-318) / 1.234566e-318 : 1.0
+Result of sin(1.23457e-319) / 1.23457e-319 : 1.0
+Result of sin(1.2347e-320) / 1.2347e-320 : 1.0
+Result of sin(1.235e-321) / 1.235e-321 : 1.0
+Result of sin(1.24e-322) / 1.24e-322 : 1.0
+Result of sin(1e-323) / 1e-323 : 1.0
+Result of sin(0.0) / 0.0 : float division by zero*****IEEE VIOLATION*****Result of sin(0.0) / 0.0 : float division by zero*****IEEE VIOLATION*****Result of sin(0.0) / 0.0 : float division by zero*****IEEE VIOLATION*****Result of sin(-1.2345678901234499e-307) / -1.2345678901234499e-307 : 1.0
+Result of sin(-1.23456789012345e-308) / -1.23456789012345e-308 : 1.0
+Result of sin(-1.234567890123447e-309) / -1.234567890123447e-309 : 1.0
+Result of sin(-1.23456789012346e-310) / -1.23456789012346e-310 : 1.0
+Result of sin(-1.2345678901233e-311) / -1.2345678901233e-311 : 1.0
+Result of sin(-1.234567890124e-312) / -1.234567890124e-312 : 1.0
+Result of sin(-1.2345678901e-313) / -1.2345678901e-313 : 1.0
+Result of sin(-1.23456789e-314) / -1.23456789e-314 : 1.0
+Result of sin(-1.23456789e-315) / -1.23456789e-315 : 1.0
+Result of sin(-1.2345679e-316) / -1.2345679e-316 : 1.0
+Result of sin(-1.234568e-317) / -1.234568e-317 : 1.0
+Result of sin(-1.234566e-318) / -1.234566e-318 : 1.0
+Result of sin(-1.23457e-319) / -1.23457e-319 : 1.0
+Result of sin(-1.2347e-320) / -1.2347e-320 : 1.0
+Result of sin(-1.235e-321) / -1.235e-321 : 1.0
+Result of sin(-1.24e-322) / -1.24e-322 : 1.0
+Result of sin(-1e-323) / -1e-323 : 1.0
+Result of sin(-0.0) / -0.0 : float division by zero*****IEEE VIOLATION*****Result of sin(-0.0) / -0.0 : float division by zero*****IEEE VIOLATION*****Result of sin(-0.0) / -0.0 : float division by zero*****IEEE VIOLATION*****Result of sin(-1.2345678901234499e-307) / |-1.2345678901234499e-307| : -1.0
+Result of sin(-1.23456789012345e-308) / |-1.23456789012345e-308| : -1.0
+Result of sin(-1.234567890123447e-309) / |-1.234567890123447e-309| : -1.0
+Result of sin(-1.23456789012346e-310) / |-1.23456789012346e-310| : -1.0
+Result of sin(-1.2345678901233e-311) / |-1.2345678901233e-311| : -1.0
+Result of sin(-1.234567890124e-312) / |-1.234567890124e-312| : -1.0
+Result of sin(-1.2345678901e-313) / |-1.2345678901e-313| : -1.0
+Result of sin(-1.23456789e-314) / |-1.23456789e-314| : -1.0
+Result of sin(-1.23456789e-315) / |-1.23456789e-315| : -1.0
+Result of sin(-1.2345679e-316) / |-1.2345679e-316| : -1.0
+Result of sin(-1.234568e-317) / |-1.234568e-317| : -1.0
+Result of sin(-1.234566e-318) / |-1.234566e-318| : -1.0
+Result of sin(-1.23457e-319) / |-1.23457e-319| : -1.0
+Result of sin(-1.2347e-320) / |-1.2347e-320| : -1.0
+Result of sin(-1.235e-321) / |-1.235e-321| : -1.0
+Result of sin(-1.24e-322) / |-1.24e-322| : -1.0
+Result of sin(-1e-323) / |-1e-323| : -1.0
+Result of sin(-0.0) / |-0.0| : float division by zero*****IEEE VIOLATION*****Result of sin(-0.0) / |-0.0| : float division by zero*****IEEE VIOLATION*****Result of sin(-0.0) / |-0.0| : float division by zero*****IEEE VIOLATION*****
+################################################################################
+Calculation of Pi
+################################################################################
+
+First 31 digits of pi           : 3.141592653589793238462643383279
+First 31 digits of pi calculated: 3.141592653589793238462643383279
