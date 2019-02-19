@@ -39,7 +39,7 @@ def dump_log(title, module):
 		a = result.get()
 		if a[1]:
 			iq.append(a[0])
-			a = a[0] + "*****IEEE VIOLATION*****"
+			a = a[0] + "   *****IEEE VIOLATION*****" +"\n"
 		else:
 			a = a[0] + "\n"
 		f.write(a)
