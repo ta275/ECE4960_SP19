@@ -2,7 +2,6 @@
 #Programming Assignment 1
 #Author: Tejas Advait (ta275)
 #Date of Creation: Feb 12 2019
-#Last updated: Feb 18 2019
 
 
 import integer_exception
@@ -17,6 +16,7 @@ import random
 
 f = open("detailed_log.txt","w")
 ieee = open("ieee_compliance_report.txt","w")
+p = open("digits_of_pi.txt","w")
 
 iq = []
 
@@ -32,8 +32,8 @@ def addsub(title,fl):
 		a = temp.get() + "\n"
 		fl.write(a)
 
-def dump_log(title, module):
-	addsub(title,f)
+def dump_log(title, module,fl):
+	addsub(title,fl)
 	module.main()
 	while (not result.empty()):
 		a = result.get()
@@ -42,7 +42,7 @@ def dump_log(title, module):
 			a = a[0] + "   *****IEEE VIOLATION*****" +"\n"
 		else:
 			a = a[0] + "\n"
-		f.write(a)
+		fl.write(a)
 
 def ieee_report(v):
 	addsub("IEEE Compliance Report", ieee)
@@ -54,11 +54,12 @@ def ieee_report(v):
 	for i in range (0,10):
 		ieee.write(str(i+1)+". "+v[i]+"\n")
 
-dump_log("Integer Exception Handling", integer_exception)
-dump_log("Floating-Point Overflow and Underflow", float_under_over)
-dump_log("Floating-Point Operations of INF, NINF, and NAN", float_inf_ninf_nan)
-dump_log("Signed-Zero Handling", signed_zero)
-dump_log("Calculation of Pi", spigot_pi)
+dump_log("Integer Exception Handling", integer_exception,f)
+dump_log("Floating-Point Overflow and Underflow", float_under_over,f)
+dump_log("Floating-Point Operations of INF, NINF, and NAN", float_inf_ninf_nan,f)
+dump_log("Signed-Zero Handling", signed_zero,f)
+dump_log("Calculation of Pi", spigot_pi,p)
 ieee_report(iq)
 f.close()
 ieee.close()
+p.close()

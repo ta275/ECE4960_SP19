@@ -2,7 +2,6 @@
 #Programming Assignment 1
 #Author: Tejas Advait (ta275)
 #Date of Creation: Feb 12 2019
-#Last updated: Feb 18 2019
 
 import math
 import queue

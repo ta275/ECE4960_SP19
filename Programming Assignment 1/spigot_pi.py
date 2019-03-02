@@ -3,7 +3,6 @@
 #Digits of Pi in Python 3.7.0
 #Author: Tejas Advait (ta275)
 #Date of Creation: Feb 12 2019
-#Last updated: Feb 18 2019
 
 #Based on "Unbounded Spigot Algorithms for the Digits of Pi" by Jeremy Gibbons
 #The paper can be found at http://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/spigot.pdf
