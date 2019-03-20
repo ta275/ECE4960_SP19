@@ -119,11 +119,24 @@ class AbstractMatrix(ABC):
 		"""
 		Abstract method for augmenting this matrix with another matrix x.
 
-		x: A matrix with a single columng and number of rows equal to the
+		x: A matrix with a single column and number of rows equal to the
 		number of rows of this matrix.
 
 		Augmenting this matrix with another matrix is only allowed if this
 		is a square matrix.
+
+		**This abstract method must be implemented in a concrete subclass**
+		"""
+		pass
+
+	@abstractmethod
+	def deaugment(self):
+		"""
+		Abstract method for deaugmenting this matrix, if this matrix is
+		already augmented.
+
+		Removes the the column matrix resulting from the last column of this
+		augmented matrix and returns it.
 
 		**This abstract method must be implemented in a concrete subclass**
 		"""
@@ -138,23 +151,6 @@ class AbstractMatrix(ABC):
 		column-rank of this matrix
 
 		Returns: A matrix which is the result of multiplying this matrix with x
-
-		**This abstract method must be implemented in a concrete subclass**
-		"""
-		pass
-
-	@abstractmethod
-	def productAugmented(self):
-		"""
-		Abstract method for carrying out matrix multiplication of the
-		submatrices of this matrix. The first matrix is the original matrix
-		which was augmented with the matrix x.
-
-		This method runs successfully if this matrix is augmented, otherwise
-		an exception is raised.
-
-		Returns: A matrix which is the result of multiplying the original
-		matrix with the matrix it was augmented with.
 
 		**This abstract method must be implemented in a concrete subclass**
 		"""
@@ -265,6 +261,9 @@ class FullMatrix(AbstractMatrix):
 			self._mat = insert(self._mat, (self.rowRank,), v,axis = 1) 
 
 	def deaugment(self):
+		"""
+		Concrete implementation of the abstract deaugment method in AbstactMatrix.
+		"""
 		
 		if not self.augmented:
 			raise Exception ("Matrix not augmented.")
@@ -300,23 +299,7 @@ class FullMatrix(AbstractMatrix):
 
 			return ans
 
-	def productAugmented(self):
-		"""
-		Concrete implementation of the abstract productAugmented method in
-		AbstractMatrix.
-		"""
-		if not self.augmented:
-			raise Exception ("Not an augmented Matrix.")
 
-		else:
-			from numpy import matmul
-			x = self._mat[:, self.colRank - 1].reshape(self.rowRank,1)
-			A = self._mat[:, [i for i in range(self.colRank-1)]]
-			v = matmul(A,x)
-			ans = FullMatrix(self.rowRank,1)
-			for i in range(self.rowRank):
-				ans.addElement(i,0,v[i,0])
-			return ans
 
 
 	def rowPermute(self,i,j):
@@ -333,12 +316,6 @@ class FullMatrix(AbstractMatrix):
 		"""
 
 		self._mat[j] = self._mat[i]*a + self._mat[j]
-
-
-
-
-
-
 
 
 
@@ -407,9 +384,8 @@ class SparseMatrix(AbstractMatrix):
 				return self._value[pos]
 			if colInd > i:
 				pos+=1
-		
 
-		return 0
+		return 0.
 
 	def toFullMatrix(self):
 		"""
@@ -471,10 +447,10 @@ class SparseMatrix(AbstractMatrix):
 		colj = self._colInd[fstj : lstj]
 		valj = self._value[fstj : lstj]
 
-		for t in range(len(coli)):
+		for t in coli:
 			self.deleteElement(i,t)
 
-		for t in range(len(colj)):
+		for t in colj:
 			self.deleteElement(j,t)
 
 		for t in range(len(coli)):
@@ -488,15 +464,24 @@ class SparseMatrix(AbstractMatrix):
 		Concrete implementation of the abstract rowScale method in 
 		AbstractMatrix.
 		"""
+		fsti = self._rowPtr[i]
+		lsti = self._rowPtr[i+1]
+		coli = self._colInd[fsti : lsti]
 
-		for t in range(self.colRank):
-			ait = self.retrieveElement(i,t)
-			ajt = self.retrieveElement(j,t)
+
+		fstj = self._rowPtr[j]
+		lstj = self._rowPtr[j+1]
+		colj = self._colInd[fstj : lstj]
+
+
+
+		for t in range(len(coli)):
+			ait = self.retrieveElement(i,coli[t])
+			ajt = self.retrieveElement(j,coli[t])
 			newajt = a*ait + ajt
-			self.deleteElement(j,t)
-			
+			self.deleteElement(j,coli[t])
 			if newajt != 0:
-				self.addElement(j,t,newajt)
+				self.addElement(j,coli[t],newajt)
 
 	def productAx(self, x):
 		"""
@@ -507,14 +492,18 @@ class SparseMatrix(AbstractMatrix):
 			raise Exception("Dimensions mismatch")
 
 		ans = SparseMatrix(self.rowRank,1)
-		v = []
-		for i in range(self.colRank):
-			v.append(x.retrieveElement(i,0))
+
 
 		for i in range(self.rowRank):
 			s = 0
-			for k in range(self.colRank):
-				s += self.retrieveElement(i,k)*v[k]
+			fsti = self._rowPtr[i]
+			lsti = self._rowPtr[i+1]
+			coli = self._colInd[fsti : lsti]
+			vali = self._value[fsti : lsti]
+
+			for k in range(len(coli)):
+				col = coli[k]
+				s += vali[k]*x.retrieveElement(col,0)
 			
 			ans.addElement(i,0,s)
 
@@ -544,11 +533,15 @@ class SparseMatrix(AbstractMatrix):
 
 
 	def deaugment(self):
+		"""
+		Concrete implementation of the abstract deaugment method in AbstactMatrix.
+		"""
 
 		if not self.augmented:
 			raise Exception ("Matrix not augmented.")
 
 		else:
+
 			x = SparseMatrix(self.rowRank, 1)
 
 			for i in range (self.rowRank):
@@ -557,31 +550,3 @@ class SparseMatrix(AbstractMatrix):
 
 			self.colRank -= 1
 			return x
-
-
-
-
-
-
-	def productAugmented(self):
-		"""
-		Concrete implementation of the abstract productAugmented method in
-		AbstractMatrix.
-		"""
-
-		if not self.augmented:
-			raise Exception ("Not an augmented Matrix.")
-
-		else:
-			ans = SparseMatrix(self.rowRank,1)
-			v = []
-			for i in range (self.rowRank):
-				v.append(self.retrieveElement(i,self.colRank - 1))
-			
-			for i in range (self.rowRank):
-				s = 0
-				for k in range (self.rowRank):
-					s += self.retrieveElement(i,k) * v[k]
-				ans.addElement(i,0,s)
-
-			return ans

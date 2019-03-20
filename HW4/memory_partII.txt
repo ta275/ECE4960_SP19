@@ -1,0 +1,24 @@
+Filename: test.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+   149     27.2 MiB     27.2 MiB   	@profile(stream = mem)
+   150                             	def test_combined(self):
+   151                             		# import time
+   152                             		# start = time.time()
+   153     27.3 MiB      0.1 MiB   		self.A_sparse.rowPermute(0,2)
+   154     27.3 MiB      0.0 MiB   		self.A_sparse.rowPermute(0,4)
+   155     27.3 MiB      0.0 MiB   		self.A_sparse.rowPermute(9,2999)
+   156     27.3 MiB      0.0 MiB   		self.A_sparse.rowPermute(4999,9999)
+   157     27.3 MiB      0.0 MiB   		self.A_sparse.rowPermute(5,14999)
+   158     27.3 MiB      0.0 MiB   		self.A_sparse.rowScale(1,3,3.0)
+   159     27.2 MiB      0.0 MiB   		self.A_sparse.rowPermute(1,4)
+   160     27.2 MiB      0.0 MiB   		self.A_sparse.rowScale(4,3,-3.0)
+   161     27.8 MiB      0.5 MiB   		b = self.A_sparse.productAx(self.x_full)
+   162                             		# end = time.time()
+   163                             		# runtime = open("runtime_partII.txt","w+")
+   164                             		# runtime.write("Total runtime for matrix operations in part II: %.4f seconds\n" % (end-start))
+   165                             		# runtime.close()
+   166     27.8 MiB      0.0 MiB   		self.assertTrue(helper_partII(self.A_sparse,b) < self.tolerance)
+
+

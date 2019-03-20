@@ -10,8 +10,6 @@ import numpy as np
 from scipy import sparse
 from matrix import FullMatrix, SparseMatrix
 
-
-
 def norm2(mat1,mat2):
 	"""
 	Calculates the second norm for comparing mat1 and mat2.
@@ -63,16 +61,14 @@ class TestPartI(unittest.TestCase):
 				self.A_full.addElement(i,j,self.A[i][j])
 				self.A_sparse.addElement(i,j,self.A[i][j])
 
-		self.A_sparse.augment(self.x_full)
-		self.A_full.augment(self.x_full)
 
 	def test_rowPermute(self):
 		self.A_full.rowPermute(0,2)
 		self.A_full.rowPermute(0,4)
 		self.A_sparse.rowPermute(0,2)
 		self.A_sparse.rowPermute(0,4)
-		self.A_sparse.deaugment()
-		self.A_full.deaugment()
+		self.x_full.rowPermute(0,2)
+		self.x_full.rowPermute(0,4)
 
 		self.assertTrue(norm2(self.A_full, self.A_sparse) == 0.0)
 
@@ -81,13 +77,14 @@ class TestPartI(unittest.TestCase):
 		self.A_full.rowScale(4,1,-4.4)
 		self.A_sparse.rowScale(0,3,3)
 		self.A_sparse.rowScale(4,1,-4.4)
-		self.A_sparse.deaugment()
-		self.A_full.deaugment()
+		self.x_full.rowScale(0,3,3)
+		self.x_full.rowScale(4,1,-4.4)
 		self.assertTrue(norm2(self.A_full, self.A_sparse) == 0.0)
 
-	def test_productAugmented(self):
-		full = self.A_full.productAugmented()
-		sparse = self.A_sparse.productAugmented()
+
+	def test_productAx(self):
+		full = self.A_full.productAx(self.x_full)
+		sparse = self.A_sparse.productAx(self.x_full)
 		self.assertTrue(norm2(full,sparse) == 0.0)
 
 	def test_combined(self):
@@ -99,8 +96,13 @@ class TestPartI(unittest.TestCase):
 		self.A_full.rowScale(4,1,-4.4)
 		self.A_sparse.rowScale(0,3,3)
 		self.A_sparse.rowScale(4,1,-4.4)
-		full = self.A_full.productAugmented()
-		sparse = self.A_sparse.productAugmented()
+		self.x_full.rowPermute(0,2)
+		self.x_full.rowPermute(0,4)
+		self.x_full.rowScale(0,3,3)
+		self.x_full.rowScale(4,1,-4.4)
+
+		full = self.A_full.productAx(self.x_full)
+		sparse = self.A_sparse.productAx(self.x_full)
 		self.assertTrue(norm2(full,sparse) == 0.0)
 
 
@@ -110,6 +112,9 @@ def helper_partII(A,b):
 	Helper function for Part II testing.
 	This function calculates the sum of all the elements of A
 	and b and returns the magnitude of their difference.
+
+	A: A matrix in SparseMatrix format
+	b: A column matrix in SparseMatrix format
 	"""
 	s1 = sum(A._value)
 	s2 = sum(b._value)
@@ -119,41 +124,32 @@ class TestPartII(unittest.TestCase):
 	"""
 	Test suite for part II, when ground truth is not known.
 	"""
-
-	from memory_profiler import profile
+	
 	def setUp(self):
 		self.tolerance = 10**-7
-		file = open("memplus.mtx","r")
-		line = file.readline()
-		line = file.readline()
-		line = line.split()
-		rowRank = int(line[0])
-		colRank = int(line[1])
-		self.A_sparse = SparseMatrix(rowRank,colRank)
-		while True:
-			
-			line = file.readline()
-			line = line.split()
+		import pickle
+		'''
+		Load the memplus matrix in SparseMatrix format from 
+		the file "memplus_sparse.bin" as generated and verified
+		by the bin_generator.
 
-			if len(line) == 3:
-				row_coord = int(line[0]) - 1
-				col_coord = int(line[1]) - 1
-				value = float(line[2].strip("\n"))
-				self.A_sparse.addElement(row_coord,col_coord,value)
-			else:
-				file.close()
-				break
-
-		self.x_full = FullMatrix(rowRank, 1)
-		
-		for i in range (rowRank):
+		Also create the column matrix with rowRank = rowRank of A
+		and with all of its entries as 1.0
+		'''
+		f = open("memplus_sparse.bin", "rb")
+		self.A_sparse = pickle.load(f)
+		f.close()
+		self.x_full = FullMatrix(self.A_sparse.rowRank, 1)
+		for i in range (self.x_full.rowRank):
 			self.x_full.addElement(i,0,1.0)
 
-		self.A_sparse.augment(self.x_full)
-
-	fp = open('memory_profiler.log','w+')
-	@profile(stream = fp)
+	
+	from memory_profiler import profile
+	mem = open("memory_partII.txt","w+")
+	@profile(stream = mem)
 	def test_combined(self):
+		# import time
+		# start = time.time()
 		self.A_sparse.rowPermute(0,2)
 		self.A_sparse.rowPermute(0,4)
 		self.A_sparse.rowPermute(9,2999)
@@ -162,14 +158,17 @@ class TestPartII(unittest.TestCase):
 		self.A_sparse.rowScale(1,3,3.0)
 		self.A_sparse.rowPermute(1,4)
 		self.A_sparse.rowScale(4,3,-3.0)
-		b = self.A_sparse.productAugmented()
-		self.A_sparse.deaugment()
+		b = self.A_sparse.productAx(self.x_full)
+		# end = time.time()
+		# runtime = open("runtime_partII.txt","w+")
+		# runtime.write("Total runtime for matrix operations in part II: %.4f seconds\n" % (end-start))
+		# runtime.close()
 		self.assertTrue(helper_partII(self.A_sparse,b) < self.tolerance)
 
 
 
-
 if __name__ == '__main__':
+
 	unittest.main()
 
 
