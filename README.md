@@ -6,6 +6,7 @@ Following assignments have been completed:
 
 * **Programming Assignment 1: Arithmetic Exception Handling**
 * **Homework 2 [Programming HW #1]: Differentiation in Local Analysis**
+* **Homework 4 [Programming HW #2]: Applying the Wilkinson Principle to Sparse Matrix Computation**
 
 
 ## Author
