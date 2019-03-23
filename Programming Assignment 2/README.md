@@ -11,7 +11,6 @@ Computational time and memory usage is reported to validate the efficiency of th
 A short report documenting the modular design, testing strategies and the results achieved is also provided.
 
 
-
 ## Author
 
 **Tejas Advait**

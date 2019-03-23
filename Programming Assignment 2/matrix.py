@@ -1,10 +1,13 @@
 """
-HW 4 ECE 4960 SPRING 2019
+ECE 4960 SPRING 2019
+Programming Assignment 2
 Matrix Module
 Authors: Tejas Advait (TA275)
 """
 
 from abc import ABC, abstractmethod
+import numpy as np
+from numpy import ndarray, zeros, matmul, insert
 
 class AbstractMatrix(ABC):
 	"""
@@ -188,7 +191,7 @@ class FullMatrix(AbstractMatrix):
 		colRank: number of columns [int]
 
 		"""
-		from numpy import ndarray, zeros, matmul, insert
+		
 		super().__init__(rowRank,colRank)
 		
 		#self._mat is the initial zero matrix
@@ -203,7 +206,7 @@ class FullMatrix(AbstractMatrix):
 		AbstractMatrix.
 		"""
 
-		self._mat[rowInd,colInd] = value
+		self._mat[rowInd,colInd] = np.float64(value)
 
 	def retrieveElement(self, rowInd, colInd):
 		"""
@@ -252,7 +255,7 @@ class FullMatrix(AbstractMatrix):
 		if self.augmented:
 			raise Exception ("Matrix already augmented.")
 		else:
-			from numpy import zeros, insert
+			
 			self.augmented = True
 			self.colRank += 1
 			v = zeros((self.rowRank,1))
@@ -286,7 +289,7 @@ class FullMatrix(AbstractMatrix):
 			raise Exception("Dimensions mismatch")
 
 		else:
-			from numpy import zeros, matmul
+			
 			ans = FullMatrix(self.rowRank,1)
 			v = zeros((self.colRank, 1))
 			for i in range(self.colRank):
@@ -354,6 +357,7 @@ class SparseMatrix(AbstractMatrix):
 			lst = self._rowPtr[rowInd+1]
 			col = self._colInd[fst:lst]
 			pos = fst
+			value = np.float64(value)
 			replaced = False
 			for i in col:
 				if i == colInd:
