@@ -1,0 +1,13 @@
+Filename: sparse_memory_test.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+   137     20.2 MiB     20.2 MiB   @profile(stream = f7)
+   138                             def productAx_usage():
+   139     20.5 MiB      0.3 MiB   	productAx(smatrix1)
+   140     20.6 MiB      0.1 MiB   	productAx(smatrix2)
+   141     20.6 MiB      0.0 MiB   	productAx(smatrix3)
+   142     20.6 MiB      0.0 MiB   	productAx(smatrix4)
+   143     20.8 MiB      0.1 MiB   	productAx(smatrix5)
+
+

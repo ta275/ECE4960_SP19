@@ -1,0 +1,18 @@
+Filename: sparse_memory_test.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    92     24.6 MiB     24.6 MiB   @profile(stream = f2)
+    93                             def initialize_sparse():
+    94                             	global smatrix1 
+    95                             	global smatrix2 
+    96                             	global smatrix3 
+    97                             	global smatrix4 
+    98                             	global smatrix5 
+    99     24.7 MiB      0.0 MiB   	smatrix1 = np2mat(matrix1,SparseMatrix)
+   100     25.1 MiB      0.4 MiB   	smatrix2 = np2mat(matrix2,SparseMatrix)
+   101     26.1 MiB      1.1 MiB   	smatrix3 = np2mat(matrix3,SparseMatrix)
+   102     16.2 MiB      0.0 MiB   	smatrix4 = np2mat(matrix4,SparseMatrix)
+   103     14.5 MiB      0.0 MiB   	smatrix5 = np2mat(matrix5,SparseMatrix)
+
+
