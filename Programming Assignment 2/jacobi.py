@@ -6,14 +6,13 @@ Authors: Tejas Advait (TA275)
 """
 
 from matrix import FullMatrix, SparseMatrix
-import pickle
 import numpy as np
 import math
 import copy
 
-class Jacobi_Solver:
+class Jacobi_Solver():
 
-	def __init__(self, A, b, x0 = 0, tol = 10**-9, max_iter = -1):
+	def __init__(self, A, b, x0 = 0, tol = 10**-9, max_iter = 10**100):
 		self.A = copy.deepcopy(A)
 
 		self.b = b
@@ -30,7 +29,7 @@ class Jacobi_Solver:
 		
 		self.D_inv = SparseMatrix(self.n,self.n)
 
-		self.R = A
+		self.R = copy.deepcopy(A)
 		
 		for i in range (self.n):
 			aii = A.retrieveElement(i,i)
@@ -51,19 +50,19 @@ class Jacobi_Solver:
 		return x
 
 
-	def one_itera(self):
+	# def one_itera(self):
 
-		x = FullMatrix(self.n,1)
-		for i in range (0,self.n):
-			xi = self.b.retrieveElement(i,0)
-			for j in range(0,self.n):
-				if j != i:
-					xi += -1 * self.A.retrieveElement(i,j) * self.x0.retrieveElement(j,0)
+	# 	x = FullMatrix(self.n,1)
+	# 	for i in range (0,self.n):
+	# 		xi = self.b.retrieveElement(i,0)
+	# 		for j in range(0,self.n):
+	# 			if j != i:
+	# 				xi += -1 * self.A.retrieveElement(i,j) * self.x0.retrieveElement(j,0)
 
-			xi = xi / self.A.retrieveElement(i,i)
-			x.addElement(i,0,xi)
+	# 		xi = xi / self.A.retrieveElement(i,i)
+	# 		x.addElement(i,0,xi)
 
-		return x
+	# 	return x
 
 	def norm2(self,mat1,mat2):
 		"""
@@ -83,30 +82,28 @@ class Jacobi_Solver:
 				result += s
 		return math.sqrt(result)
 
+	def residual_norm(self):
+		b_calc = self.A.productAx(self.x)
+		numerator = self.norm2(self.b,b_calc)
+		denominator = 0
+		for i in range(self.b.rowRank):
+			denominator += (self.b.retrieveElement(i,0))**2
+		denominator = math.sqrt(denominator)
+		return numerator/denominator
+
 	def solve(self):
-
 		num_iter = 1
-		if self.max_iter != -1:
-			while num_iter <= self.max_iter:
-				x = self.one_itera()
-				if self.norm2(x,self.x0) < self.tol:
-					self.x = x
-					break
+		while num_iter <= self.max_iter:
+			x = self.one_iter()
+			if self.norm2(x,self.x0) < self.tol:
+				self.x = x
+				break
 
-				num_iter += 1
-				self.x0 = x
+			num_iter += 1
+			self.x0 = x
 
-			self.x = x
-
-		else:
-			while True:
-				x = self.one_iter()
-				if self.norm2(x,self.x0) < self.tol:
-					self.x = x
-					self.max_iter = num_iter
-					break
-				num_iter += 1
-				self.x0 = x
+		self.x = x
+		self.max_iter = num_iter
 
 
 

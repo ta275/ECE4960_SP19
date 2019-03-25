@@ -274,7 +274,9 @@ class FullMatrix(AbstractMatrix):
 
 			for i in range (self.rowRank):
 				x.addElement(i,0,self.retrieveElement(i,self.colRank - 1))
-				self.deleteElement(i,self.colRank - 1)
+
+			self._mat = self._mat[:,:-1]
+				
 			self.colRank -= 1
 			return x
 

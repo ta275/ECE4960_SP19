@@ -338,14 +338,14 @@ class WilkinsonTestPartI(unittest.TestCase):
 				self.A_full.addElement(i,j,self.A[i][j])
 				self.A_sparse.addElement(i,j,self.A[i][j])
 
+		self.A_full.augment(self.x_full)
+		self.A_sparse.augment(self.x_full)
 
 	def test_rowPermute(self):
 		self.A_full.rowPermute(0,2)
 		self.A_full.rowPermute(0,4)
 		self.A_sparse.rowPermute(0,2)
 		self.A_sparse.rowPermute(0,4)
-		self.x_full.rowPermute(0,2)
-		self.x_full.rowPermute(0,4)
 
 		self.assertTrue(norm2(self.A_full, self.A_sparse) == 0.0)
 
@@ -354,14 +354,14 @@ class WilkinsonTestPartI(unittest.TestCase):
 		self.A_full.rowScale(4,1,-4.4)
 		self.A_sparse.rowScale(0,3,3)
 		self.A_sparse.rowScale(4,1,-4.4)
-		self.x_full.rowScale(0,3,3)
-		self.x_full.rowScale(4,1,-4.4)
 		self.assertTrue(norm2(self.A_full, self.A_sparse) == 0.0)
 
 
 	def test_productAx(self):
-		full = self.A_full.productAx(self.x_full)
-		sparse = self.A_sparse.productAx(self.x_full)
+		x = self.A_full.deaugment()
+		self.A_sparse.deaugment()
+		full = self.A_full.productAx(x)
+		sparse = self.A_sparse.productAx(x)
 		self.assertTrue(norm2(full,sparse) == 0.0)
 
 	def test_combined(self):
@@ -373,13 +373,12 @@ class WilkinsonTestPartI(unittest.TestCase):
 		self.A_full.rowScale(4,1,-4.4)
 		self.A_sparse.rowScale(0,3,3)
 		self.A_sparse.rowScale(4,1,-4.4)
-		self.x_full.rowPermute(0,2)
-		self.x_full.rowPermute(0,4)
-		self.x_full.rowScale(0,3,3)
-		self.x_full.rowScale(4,1,-4.4)
 
-		full = self.A_full.productAx(self.x_full)
-		sparse = self.A_sparse.productAx(self.x_full)
+		x = self.A_sparse.deaugment()
+		self.A_full.deaugment()
+
+		full = self.A_full.productAx(x)
+		sparse = self.A_sparse.productAx(x)
 		self.assertTrue(norm2(full,sparse) == 0.0)
 
 
