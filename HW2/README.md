@@ -16,4 +16,4 @@ A pdf report tabulating all the observations is generated.
 
 ## Acknowledgments
 
-* Prof. Edwin Kan for providing the assignment details.
+* Prof. Edwin Kan for providing the assignment details and continuous guidance.

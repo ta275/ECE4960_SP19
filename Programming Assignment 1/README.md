@@ -29,5 +29,6 @@ Run the main.py file in Python 3.7 to generate the reports.
 
 ## Acknowledgments
 
-* Prof. Edwin Kan for providing the assignment details.
+* Prof. Edwin Kan for providing the assignment details and continuous guidance.
+
 * "Unbounded Spigot Algorithms for the Digits of Pi" by Jeremy Gibbons. The paper can be found [here](http://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/spigot.pdf).

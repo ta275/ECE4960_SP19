@@ -5,6 +5,7 @@ This directory contains the implementations of all the programming assignments, 
 Following assignments have been completed:
 
 * **Programming Assignment 1: Arithmetic Exception Handling**
+* **Programming Assignment 2:  Modular Testing in Sparse Matrix Solvers**
 * **Homework 2 [Programming HW #1]: Differentiation in Local Analysis**
 * **Homework 4 [Programming HW #2]: Applying the Wilkinson Principle to Sparse Matrix Computation**
 
@@ -15,4 +16,4 @@ Following assignments have been completed:
 
 ## Acknowledgments
 
-* Prof. Edwin Kan for providing the assignment details.
+* Prof. Edwin Kan for providing the assignment details and continuous guidance.
