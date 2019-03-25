@@ -1,0 +1,13 @@
+Filename: sparse_memory_test.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+   105     15.4 MiB     15.4 MiB   @profile(stream = f3)
+   106                             def retrieve_usage():
+   107     15.6 MiB      0.2 MiB   	retrieve(smatrix1)
+   108     16.0 MiB      0.4 MiB   	retrieve(smatrix2)
+   109     16.8 MiB      0.8 MiB   	retrieve(smatrix3)
+   110     18.3 MiB      1.5 MiB   	retrieve(smatrix4)
+   111     18.9 MiB      0.6 MiB   	retrieve(smatrix5)
+
+

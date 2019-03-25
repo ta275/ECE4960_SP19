@@ -1,0 +1,18 @@
+Filename: sparse_memory_test.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    79     22.7 MiB     22.7 MiB   @profile(stream = f1)
+    80                             def initialize_csr():
+    81                             	global matrix1
+    82                             	global matrix2
+    83                             	global matrix3
+    84                             	global matrix4
+    85                             	global matrix5
+    86     23.1 MiB      0.4 MiB   	matrix1 = sparse.random(500,500,density=0.01,format="csr",dtype= np.float64)
+    87     23.3 MiB      0.2 MiB   	matrix2 = sparse.random(1000,1000,density=0.01,format="csr",dtype= np.float64)
+    88     23.5 MiB      0.2 MiB   	matrix3 = sparse.random(1500,1500,density=0.01,format="csr",dtype= np.float64)
+    89     23.9 MiB      0.4 MiB   	matrix4 = sparse.random(2000,2000,density=0.01,format="csr",dtype= np.float64)
+    90     24.6 MiB      0.7 MiB   	matrix5 = sparse.random(2500,2500,density=0.01,format="csr",dtype= np.float64)
+
+

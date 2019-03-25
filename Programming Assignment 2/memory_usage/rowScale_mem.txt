@@ -1,0 +1,13 @@
+Filename: sparse_memory_test.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+   129     19.0 MiB     19.0 MiB   @profile(stream = f6)
+   130                             def rowScale_usage():
+   131     19.1 MiB      0.1 MiB   	rowScale(smatrix1)
+   132     19.3 MiB      0.2 MiB   	rowScale(smatrix2)
+   133     19.4 MiB      0.2 MiB   	rowScale(smatrix3)
+   134     20.0 MiB      0.5 MiB   	rowScale(smatrix4)
+   135     20.2 MiB      0.2 MiB   	rowScale(smatrix5)
+
+

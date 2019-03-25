@@ -1,0 +1,13 @@
+Filename: sparse_memory_test.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+   121     19.0 MiB     19.0 MiB   @profile(stream = f5)
+   122                             def rowPermute_usage():
+   123     19.0 MiB      0.0 MiB   	rowPermute(smatrix1)
+   124     19.0 MiB      0.0 MiB   	rowPermute(smatrix2)
+   125     19.0 MiB      0.0 MiB   	rowPermute(smatrix3)
+   126     19.0 MiB      0.0 MiB   	rowPermute(smatrix4)
+   127     19.0 MiB      0.0 MiB   	rowPermute(smatrix5)
+
+
