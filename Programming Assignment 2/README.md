@@ -19,4 +19,4 @@ A short report documenting the modular design, testing strategies and the result
 
 ## Acknowledgments
 
-* Prof. Edwin Kan for providing the assignment details.
+* Prof. Edwin Kan for providing the assignment details and continuous guidance.
