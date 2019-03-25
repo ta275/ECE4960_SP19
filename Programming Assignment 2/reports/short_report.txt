@@ -1,0 +1,20 @@
+"""
+ECE 4960 SPRING 2019
+Programming Assignment 2
+Short Report
+Authors: Tejas Advait (TA275)
+"""
+
+Two matrix formats have been implemented - full matrix and sparse matrix with compressed row storage.
+
+An abstract class for a matrix has been designed and the corresponding methods have been implemented for the full matrix as well as the sparse matrix. All the methods and their specifications have been documented in matrix.py.
+
+Each of the methods are tested thoroughly in the test suite named matrix_module_test.py using white-box testing as well as the Wilkinson Principle. Numerous helper functions such as matrix norm, conversion between matrix formats, element-by-element comparison of matrices, etc are implemented in helper_test.py. First the FullMatrix class is tested against a numpy ndarray [a well known matrix implementation]. Numpy ndarrays of different dimensions are created randomly and their corresponding FullMatrix objects are created. Numerous white-box tests as well as black-box tests are used to validate the FullMatrix objects with their Numpy counterparts by comparing the matrix norms (as well each individual entry for a integer matrix). Subsequently, row-permutations, row-scaling, element deletion, matrix product calculation, and other non-trivial and trivial tests are done to ensure the correctness.
+
+Once the FullMatrix implementation is verified, then the SparseMatrix implementation is verified against Scipy's sparse matrix implementation in CSR format [a well known sparse matrix implementation]. Again, matrices are created randomly and the elements of rowPtr, colInd, and value are explicitly compared after performing all the matrix operations to ensure complete correctness of the SparseMatrix class.
+
+Finally, tests using Wilkinson principle (carried over from HW 4) are done to validate SparseMatrix using FullMatrix.
+
+Additionally, memory usage and computational time checks are done via separate test files named sparse_memory_test.py and sparse_runtime_test.py, respectively. In these tests, 5 sparse matrices of rank 500, 1000, 1500, 2000, and 2500 are used to test the efficiency of SparseMatrix methods. Element addition, retrieval, deletion, row permuation and scaling, and matrix product are calculated repeatedly for a fixed number of times and the memory usage and runtime reports are generated in separate directories named memory_usage and runtime, respectively. Having estimated the runtime behavior of SparseMatrix methods, we can observe from the reports generated that these methods follow the expected trends.
+
+Using the correct SparseMatrix matrix implementation, an iterative Jacobi solver is implemented to solve systems of linear equations. As prescribed in the assignment, a sparse matrix from mat1 is generated and used to calculate a solution for three different b vectors. The normalized residual norms are reported in a separate file. The normalized residual norms are very low: they are on the order of (or less than) the tolerance provided as input to the Jacobi solver. This is due to the fact that mat1 was guaranteed to be diagonally dominant and very well conditioned which led to no convergence issues or bad solutions. Although no convergence issues were observed, nonetheless, the solver can be significantly improved by implementing algorithms to improve the conditioning of poorly conditioned matrices a preprocessing step before the iteration process. Currently, the solver works only with well-conditioned matriced.

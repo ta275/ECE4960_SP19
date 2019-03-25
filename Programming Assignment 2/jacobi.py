@@ -1,6 +1,7 @@
 """
 ECE 4960 SPRING 2019
 Programming Assignment 2
+Jacobi Iterative Solver
 
 Authors: Tejas Advait (TA275)
 """
@@ -49,21 +50,6 @@ class Jacobi_Solver():
 
 		return x
 
-
-	# def one_itera(self):
-
-	# 	x = FullMatrix(self.n,1)
-	# 	for i in range (0,self.n):
-	# 		xi = self.b.retrieveElement(i,0)
-	# 		for j in range(0,self.n):
-	# 			if j != i:
-	# 				xi += -1 * self.A.retrieveElement(i,j) * self.x0.retrieveElement(j,0)
-
-	# 		xi = xi / self.A.retrieveElement(i,i)
-	# 		x.addElement(i,0,xi)
-
-	# 	return x
-
 	def norm2(self,mat1,mat2):
 		"""
 		Calculates the second norm of [mat1 - mat2].
@@ -104,51 +90,3 @@ class Jacobi_Solver():
 
 		self.x = x
 		self.max_iter = num_iter
-
-
-
-# A = SparseMatrix(2,2)
-# A.addElement(0,0, 1)
-# A.addElement(0,1, 0.1)
-# A.addElement(1,0, 0.1)
-# A.addElement(1,1, 1)
-# b = FullMatrix(2,1)
-# b.addElement(0,0,1.1)
-# b.addElement(1,0,1.1)
-# print ("start")
-# prob1 = Jacobi_Solver(A,b)
-# prob1.solve()
-# print(prob1.x)
-# print("done")
-
-# mat1 = SparseMatrix(5,5)
-# mat1.addElement(0,0,1)
-# mat1.addElement(0,1,2)
-# mat1.addElement(0,4,3)
-# mat1.addElement(1,0,4)
-# mat1.addElement(1,1,5)
-# mat1.addElement(1,2,6)
-# mat1.addElement(2,1,7)
-# mat1.addElement(2,2,8)
-# mat1.addElement(2,4,9)
-# mat1.addElement(3,3,10)
-# mat1.addElement(4,0,11)
-# mat1.addElement(4,4,12)
-
-# b = FullMatrix(5,1)
-# b.addElement(0,0,5)
-# b.addElement(1,0,4)
-# b.addElement(2,0,3)
-# b.addElement(3,0,2)
-# b.addElement(4,0,1)
-# print ("start")
-# prob1 = Jacobi_Solver(mat1,b,max_iter = 100)
-# prob1.solve()
-# print(prob1.x)
-# print("done")
-
-
-
-
-
-

@@ -346,6 +346,8 @@ class SparseMatrix(AbstractMatrix):
 	def addElement(self, rowInd, colInd, value):
 		"""
 		Concrete implementation of the abstract addElement method in AbstractMatrix.
+		
+		Worst Case Runtime = O(NZ) where NZ = # of nonzero elements.
 		"""
 		if value == 0:
 			pass
@@ -374,6 +376,9 @@ class SparseMatrix(AbstractMatrix):
 		"""
 		Concrete implementation of the abstract retrieveElement method in 
 		AbstractMatrix.
+
+		Worst case runtime = O(n) where n = # of columns.
+		However, the actual runtime is expected to be less than this.
 		"""
 
 		fst = self._rowPtr[rowInd]
@@ -409,21 +414,22 @@ class SparseMatrix(AbstractMatrix):
 		"""
 		Concrete implementation of the abstract deleteElement method in 
 		AbstractMatrix.
+
+		Worst case runtime = O(NZ) where NZ = # of non-zero elements
+		However, the actual runtime is expected to be less than this.
 		"""
 		fst = self._rowPtr[rowInd]
 		lst = self._rowPtr[rowInd+1]
 		col = self._colInd[fst:lst]
-		suc = False
 		pos = fst 
 		for i in col:
 			if colInd > i:
 				pos+=1
 
 			if i == colInd:
-				suc = True
 				del self._colInd[pos]
 				del self._value[pos]
-				for k in range(rowInd+1, len(self._rowPtr)):
+				for k in range(rowInd + 1, len(self._rowPtr)):
 					self._rowPtr[k] -= 1
 
 	def countNZ(self):
@@ -436,6 +442,9 @@ class SparseMatrix(AbstractMatrix):
 		"""
 		Concrete implementation of the abstract rowPermute method in 
 		AbstractMatrix.
+
+		Worst case runtime = O(n*NZ) where NZ = number of non-zero elements
+		and n = number of columns.
 		"""
 
 		fsti = self._rowPtr[i]
@@ -464,6 +473,10 @@ class SparseMatrix(AbstractMatrix):
 		"""
 		Concrete implementation of the abstract rowScale method in 
 		AbstractMatrix.
+
+		Worst case runtime = O(n*NZ) where NZ = number of non-zero elements
+		and n = number of columns.
+		However, the actual runtime is expected to be significantly less than this.
 		"""
 		fsti = self._rowPtr[i]
 		lsti = self._rowPtr[i+1]
@@ -487,6 +500,8 @@ class SparseMatrix(AbstractMatrix):
 	def productAx(self, x):
 		"""
 		Concrete implementation of the abstract productAx method in AbstractMatrix.
+		
+		Worst case runtime = O(n^3) where n = number of rows or columns
 		"""
 
 		if x.rowRank != self.colRank:
