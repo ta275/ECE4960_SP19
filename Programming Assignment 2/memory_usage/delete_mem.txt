@@ -8,4 +8,10 @@ Line #    Mem usage    Increment   Line Contents
    116     19.0 MiB      0.0 MiB   	delete(smatrix2)
    117     19.0 MiB      0.0 MiB   	delete(smatrix3)
    118     19.0 MiB      0.0 MiB   	delete(smatrix4)
+<<<<<<< HEAD
    119     19.0 MiB      0.0 MiB   	delete(smatrix5)
+=======
+   119     19.0 MiB      0.0 MiB   	delete(smatrix5)
+
+
+>>>>>>> 190b193e6195d830dff5a5fa477ae9f48b2e3a3c

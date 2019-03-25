@@ -8,4 +8,10 @@ Line #    Mem usage    Increment   Line Contents
    140     20.6 MiB      0.1 MiB   	productAx(smatrix2)
    141     20.6 MiB      0.0 MiB   	productAx(smatrix3)
    142     20.6 MiB      0.0 MiB   	productAx(smatrix4)
+<<<<<<< HEAD
    143     20.8 MiB      0.1 MiB   	productAx(smatrix5)
+=======
+   143     20.8 MiB      0.1 MiB   	productAx(smatrix5)
+
+
+>>>>>>> 190b193e6195d830dff5a5fa477ae9f48b2e3a3c

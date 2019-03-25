@@ -8,4 +8,10 @@ Line #    Mem usage    Increment   Line Contents
    124     19.0 MiB      0.0 MiB   	rowPermute(smatrix2)
    125     19.0 MiB      0.0 MiB   	rowPermute(smatrix3)
    126     19.0 MiB      0.0 MiB   	rowPermute(smatrix4)
+<<<<<<< HEAD
    127     19.0 MiB      0.0 MiB   	rowPermute(smatrix5)
+=======
+   127     19.0 MiB      0.0 MiB   	rowPermute(smatrix5)
+
+
+>>>>>>> 190b193e6195d830dff5a5fa477ae9f48b2e3a3c
