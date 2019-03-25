@@ -9,5 +9,3 @@ Line #    Mem usage    Increment   Line Contents
    133     19.4 MiB      0.2 MiB   	rowScale(smatrix3)
    134     20.0 MiB      0.5 MiB   	rowScale(smatrix4)
    135     20.2 MiB      0.2 MiB   	rowScale(smatrix5)
-
-

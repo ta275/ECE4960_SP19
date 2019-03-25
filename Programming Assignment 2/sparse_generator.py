@@ -4,9 +4,11 @@ Programming Assignment 2
 Sparse Matrix Generator
 Authors: Tejas Advait (TA275)
 
-Functionality: This small program generates and validates a SparseMatrix from a
-.mtx file or from three csv files containing row pointer, column indices and values 
-and stores it in a binary file which can be loaded in other python files.
+Functionality: This program generates and validates a SparseMatrix from a
+.mtx file or from three csv files containing row pointer, column indicesz and values 
+and stores it in a binary file which can be loaded in other programs using the pickle
+module.
+
 This is helpful as generating the SparseMatrix of huge sizes takes a lot of time.
 Thus, it saves time by generating them once and storing them for use in other programs.
 This avoids generating the sparse matrix again and again when doing regression

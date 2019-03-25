@@ -14,5 +14,3 @@ Line #    Mem usage    Increment   Line Contents
     88     23.5 MiB      0.2 MiB   	matrix3 = sparse.random(1500,1500,density=0.01,format="csr",dtype= np.float64)
     89     23.9 MiB      0.4 MiB   	matrix4 = sparse.random(2000,2000,density=0.01,format="csr",dtype= np.float64)
     90     24.6 MiB      0.7 MiB   	matrix5 = sparse.random(2500,2500,density=0.01,format="csr",dtype= np.float64)
-
-

@@ -4,6 +4,7 @@ Programming Assignment 2
 Helper Functions for Testing
 Author: Tejas Advait (TA275)
 """
+
 import math
 import numpy as np
 def norm2(mat1,mat2):
@@ -139,19 +140,3 @@ def isEqualSparse(mat1,spmat):
 	c2 = np.array(mat1._colInd)
 	
 	return (np.array_equal(v1,v2) and np.array_equal(c1,c2) and np.array_equal(r1,r2))
-
-
-
-
-# def productHelper(A,b):
-# 	"""
-# 	Helper function for testing of productAx.
-# 	This function calculates the sum of all the elements of A
-# 	and b and returns the magnitude of their difference.
-
-# 	A: A matrix in SparseMatrix format
-# 	b: A column matrix in SparseMatrix format
-# 	"""
-# 	s1 = sum(A._value)
-# 	s2 = sum(b._value)
-# 	return abs(s1-s2)

@@ -9,5 +9,3 @@ Line #    Mem usage    Increment   Line Contents
    109     16.8 MiB      0.8 MiB   	retrieve(smatrix3)
    110     18.3 MiB      1.5 MiB   	retrieve(smatrix4)
    111     18.9 MiB      0.6 MiB   	retrieve(smatrix5)
-
-

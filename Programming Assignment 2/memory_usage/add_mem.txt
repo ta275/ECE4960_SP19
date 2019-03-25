@@ -14,5 +14,3 @@ Line #    Mem usage    Increment   Line Contents
    101     26.1 MiB      1.1 MiB   	smatrix3 = np2mat(matrix3,SparseMatrix)
    102     16.2 MiB      0.0 MiB   	smatrix4 = np2mat(matrix4,SparseMatrix)
    103     14.5 MiB      0.0 MiB   	smatrix5 = np2mat(matrix5,SparseMatrix)
-
-

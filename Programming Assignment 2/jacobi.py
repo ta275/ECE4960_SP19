@@ -11,9 +11,24 @@ import numpy as np
 import math
 import copy
 
-class Jacobi_Solver():
+class Jacobi_Solver:
+	"""
+	An instance is a representation of the linear system to be solved
+	using the Jacobi iterative method.
+	"""
+
 
 	def __init__(self, A, b, x0 = 0, tol = 10**-9, max_iter = 10**100):
+		"""
+		Initializes the matrix A, column matrix b, initial guess x0, tolerance,
+		and maximum number of iterations max_iter.
+
+		D_inv is the inverse of the diagonal matrix D obtained from the diagonal elements of A.
+		R is the matrix obtained from (A - D) which is equivalent to (L+U)
+
+		Db is the product obtained from the matrix multiplication of D_inv and b.
+
+		"""
 		self.A = copy.deepcopy(A)
 
 		self.b = b
@@ -42,6 +57,9 @@ class Jacobi_Solver():
 		self.x = False
 
 	def one_iter(self):
+		"""
+		One iteration of the Jacobi method.
+		"""
 		a = self.D_inv.productAx(self.R.productAx(self.x0))
 		x = FullMatrix(self.n, 1)
 		for i in range (self.n):
@@ -69,6 +87,10 @@ class Jacobi_Solver():
 		return math.sqrt(result)
 
 	def residual_norm(self):
+		"""
+		Calculates the normalized residual norm using self.x, self.A, and self.b.
+		This must be called once the method solve has been called.
+		"""
 		b_calc = self.A.productAx(self.x)
 		numerator = self.norm2(self.b,b_calc)
 		denominator = 0
@@ -78,6 +100,10 @@ class Jacobi_Solver():
 		return numerator/denominator
 
 	def solve(self):
+		"""
+		Solves the sytem of lienar equations using Jacobi iterative method without
+		implementing any matrix preconditioning.
+		"""
 		num_iter = 1
 		while num_iter <= self.max_iter:
 			x = self.one_iter()

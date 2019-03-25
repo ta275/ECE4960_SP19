@@ -12,7 +12,7 @@ from scipy import sparse
 from helper_test import *
 from matrix import FullMatrix, SparseMatrix
 
-tolerance = 10**-7
+tolerance = 10**-9
 
 class FullMatrixTest(unittest.TestCase):
 	"""

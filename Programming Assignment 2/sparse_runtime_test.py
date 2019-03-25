@@ -5,8 +5,6 @@ Sparse Runtime Test Suite
 Author: Tejas Advait (TA275)
 """
 
-import math
-
 import numpy as np
 from scipy import sparse
 from helper_test import *
@@ -147,11 +145,8 @@ file = open("runtime/sparse_5.bin","rb")
 smatrix5 = pickle.load(file)
 file.close()
 
-
-
 time_function(retrieve_time,"retrieve_time.txt","RetrieveElement")
 time_function(delete_time,"delete_time.txt","DeleteElement")
 time_function(rowPermute_time,"rowPermute_time.txt","RowPermute")
 time_function(rowScale_time,"rowScale_time.txt","RowScale")
 time_function(productAx_time,"productAx_time.txt","ProductAx")
-

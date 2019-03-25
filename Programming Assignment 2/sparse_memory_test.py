@@ -5,8 +5,6 @@ Sparse Memory-Usage Test Suite
 Author: Tejas Advait (TA275)
 """
 
-import math
-
 import numpy as np
 from scipy import sparse
 from helper_test import *

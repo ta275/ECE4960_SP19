@@ -4,8 +4,7 @@ Programming Assignment 2
 Generator Script
 Authors: Tejas Advait (TA275)
 
-Functionality: Uses sparse_generator to create matrices in the SparseMatrix
-format.
+Functionality: Uses sparse_generator to create matrices in the SparseMatrix format.
 """
 
 import sparse_generator as sg

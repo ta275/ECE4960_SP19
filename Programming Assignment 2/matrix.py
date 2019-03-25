@@ -478,6 +478,7 @@ class SparseMatrix(AbstractMatrix):
 		and n = number of columns.
 		However, the actual runtime is expected to be significantly less than this.
 		"""
+		
 		fsti = self._rowPtr[i]
 		lsti = self._rowPtr[i+1]
 		coli = self._colInd[fsti : lsti]
