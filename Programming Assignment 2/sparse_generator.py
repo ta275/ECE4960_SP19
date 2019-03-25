@@ -80,10 +80,10 @@ def from_csv_crs(rowPtr, colInd, value, file_out):
 			break
 		
 		else:
-			l1 = int(l1.strip("\n"))
+			l1 = int(l1.strip("\n")) - 1
 			rowP.append(l1)
 
-			l2 = int(f2.readline().strip("\n"))
+			l2 = int(f2.readline().strip("\n")) - 1
 			colI.append(l2)
 			l3 = np.float64(f3.readline().strip("\n"))
 			val.append(l3)
@@ -96,7 +96,7 @@ def from_csv_crs(rowPtr, colInd, value, file_out):
 			break
 		
 		else:
-			l2 = int(l2.strip("\n"))
+			l2 = int(l2.strip("\n")) - 1
 			colI.append(l2)
 
 			l3 = np.float64(f3.readline().strip("\n"))
@@ -190,8 +190,8 @@ def from_csv_crs_valid(rowPtr, colInd, value, file_out):
 			break
 		
 		else:
-			l1 = int(l1.strip("\n"))
-			l2 = int(f2.readline().strip("\n"))
+			l1 = int(l1.strip("\n")) - 1
+			l2 = int(f2.readline().strip("\n")) - 1
 			l3 = np.float64(f3.readline().strip("\n"))
 			assert(l1 == A._rowPtr[i])
 			assert(l2 == A._colInd[i])
@@ -207,7 +207,7 @@ def from_csv_crs_valid(rowPtr, colInd, value, file_out):
 			break
 		
 		else:
-			l2 = int(l2.strip("\n"))
+			l2 = int(l2.strip("\n")) - 1
 			l3 = np.float64(f3.readline().strip("\n"))
 			assert(l2 == A._colInd[i])
 			assert(l3 == A._value[i])

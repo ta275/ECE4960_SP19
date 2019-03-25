@@ -195,7 +195,7 @@ class FullMatrix(AbstractMatrix):
 		super().__init__(rowRank,colRank)
 		
 		#self._mat is the initial zero matrix
-		self._mat = zeros((rowRank, colRank))
+		self._mat = zeros((rowRank, colRank),dtype = np.float64)
 
 	def __str__(self):
 		return super().__str__()
@@ -241,8 +241,6 @@ class FullMatrix(AbstractMatrix):
 		"""
 		Concrete implementation of the abstract augment method in AbstractMatrix.
 		"""
-	
-
 		if self.rowRank != self.colRank:
 			raise Exception("Cannot augment a non-square-matrix.")
 
@@ -301,9 +299,6 @@ class FullMatrix(AbstractMatrix):
 				ans.addElement(i,0,v[i,0])
 
 			return ans
-
-
-
 
 	def rowPermute(self,i,j):
 		"""

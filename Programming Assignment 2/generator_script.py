@@ -14,9 +14,16 @@ sg.from_csv_crs('mat1/rowPtr.csv',
 				'mat1/colInd.csv',
 				'mat1/value.csv',
 				'mat1/sparse_mat1.bin')
+
 assert(sg.from_csv_crs_valid('mat1/rowPtr.csv',
 							'mat1/colInd.csv',
 							'mat1/value.csv',
 							'mat1/sparse_mat1.bin') == True)
 
-print ("Sparse matrix generated successfully.")
+print ("mat1 sparse matrix generated successfully.")
+
+sg.from_mtx('memplus/memplus.mtx','memplus/memplus_sparse.bin')
+
+assert(sg.from_mtx_valid('memplus/memplus.mtx','memplus/memplus_sparse.bin') == True)
+
+print ("memplus sparse matrix generated successfully")
