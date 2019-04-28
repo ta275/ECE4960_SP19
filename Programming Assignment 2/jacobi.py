@@ -101,7 +101,7 @@ class Jacobi_Solver:
 
 	def solve(self):
 		"""
-		Solves the sytem of lienar equations using Jacobi iterative method without
+		Solves the sytem of linear equations using Jacobi iterative method without
 		implementing any matrix preconditioning.
 		"""
 		num_iter = 1
