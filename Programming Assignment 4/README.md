@@ -1,6 +1,6 @@
 # Programming Assignment 4: Compact SPICE for ODE Solutions
 
-This directory contains an implementation of Runge-Kutta method (RK34) to solve the generic ODE in the form of dx/dt = f(t,x).
+This directory contains an implementation of forward Euler and Runge-Kutta method (RK34 with and without adaptive steps) to solve the generic ODE in the form of dx/dt = f(t,x).
 
 
 # Author
