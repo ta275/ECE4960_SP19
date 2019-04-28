@@ -151,27 +151,3 @@ class AdaptiveRK34(RK34):
 
 	def solve(self):
 		super().solve()
-
-
-
-def f(x,t):
-	return np.array([4*np.exp(0.8*t)-0.5*x[0]],dtype = np.float64).reshape(1,1)
-
-def x(t):
-	ans = (4/1.3)*(np.exp(0.8*t) - np.exp(-0.5*t))+2*np.exp(-0.5*t)
-	return np.array([ans],dtype = np.float64).reshape(1,1)
-
-FE = ForwardEuler(0,5,np.array([2],dtype=np.float64),f,1)
-FE.solve()
-
-RKNA = RK34(0,5,np.array([2],dtype=np.float64),f,1)
-RKNA.solve()
-
-RKA = AdaptiveRK34(0,5,np.array([2],dtype=np.float64),f,1)
-RKA.solve()
-# print (ODE.solution)
-# for i in range (FE.solution.shape[1]):
-# 	print ("FE: {0}, RKNA: {1}, GT: {2}, ".format(FE.solution[0,i],RKNA.solution[0,i],x(i)[0,0]))
-
-for i in range (RKA.solution.shape[1]):
-	print ("RKA: {0}, GT: {1}, ".format(RKA.solution[0,i],x(RKA.solution[1,i])[0,0]))
