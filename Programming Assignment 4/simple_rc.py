@@ -5,7 +5,7 @@ Simple RC Circuit Assembly
 Author: Tejas Advait (TA275)
 """
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 import numpy as np
 from ode_solver import ForwardEuler, RK34, AdaptiveRK34
