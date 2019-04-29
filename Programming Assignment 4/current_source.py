@@ -4,7 +4,6 @@ Programming Assignment 4
 Current Sources
 Author: Tejas Advait (TA275)
 """
-import matplotlib.pyplot as plt
 
 def large_signal(t):
 	"""
