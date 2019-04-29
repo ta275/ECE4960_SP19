@@ -50,7 +50,7 @@ class S_model:
 
 		return Y
 
-	def gen_sample(self, num_sample, param = np.empty(0), indeps = np.empty(0),noise = True):
+	def gen_sample(self, num_sample, param = np.empty(0), indeps = np.empty(0),*,noise = True):
 		"""
 		Generates num_sample number of samples with random noise within 10-20% 
 		from this model.
