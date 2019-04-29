@@ -8,7 +8,7 @@ Author: Tejas Advait (TA275)
 import numpy as np
 # from matrix import FullMatrix
 
-
+# np.seterr(all='raise')
 class ODESolver(object):
 
 	def __init__(self,init_t,end_t,init_x,f,step):
@@ -39,12 +39,8 @@ class ODESolver(object):
 		# self.num_steps = int((end_t - init_t)/step) #Number of total steps for non-adaptive methods
 
 		self.solution = np.zeros((init_x.shape[0]+1,1),dtype = np.float64)
-		self.solution[:-1,0] = init_x
+		self.solution[:-1,0] = init_x[:,0]
 		self.solution[-1,0] = init_t
-
-		# self.solution = np.zeros((init_x.shape[0]+1,self.num_steps+1),dtype = np.float64)
-		# self.solution[:-1,0] = init_x
-		# self.solution[-1,0] = init_t
 	
 	def phi(self,x,t):
 		"""
@@ -66,15 +62,23 @@ class ODESolver(object):
 		"""
 		xold = self.init_x
 		told = self.init_t
+		i = 1
 
 		while told < self.end_t:
 			
-			xnew = xold + self.phi(xold,told)*self.h(xold,told)
+			# try:
+			increment = self.phi(xold,told)
+			xnew = xold + increment*self.h(xold,told)
+			# except:
+			# 	print (xold, self.phi(xold,told), self.h(xold,told))
+
 			told += self.step
 			xold = xnew
-			sol = np.append(xnew,[[told]],axis = 0)
+			sol = np.append(xnew,[[told]], axis = 0)
 			self.solution = np.append(self.solution,sol,axis = 1)
-
+			if i%10000 == 0:
+				print (told)
+			i += 1
 
 class ForwardEuler(ODESolver):
 
@@ -97,21 +101,23 @@ class RK34(ODESolver):
 	def __init__(self,init_t,end_t,init_x,f,step):
 
 		super().__init__(init_t,end_t,init_x,f,step)
+		self.k = []
 
-	def k(self,x,t):
+	def K(self,x,t):
 		k1 = self.f(x,t)
 		k2 = self.f(x + k1*self.step/2,t + self.step/2)
-		k3 = self.f(x+3*k2*self.step/4, t + 3*self.step/4)
+		k3 = self.f(x + 3*k2*self.step/4, t + 3*self.step/4)
 		k4 = self.f(x + k3*self.step, t + self.step)
-		return [k1,k2,k3,k4]
+		self.k = [k1,k2,k3,k4]
 
 	def phi(self,x,t):
-		k = self.k(x,t)
-		k1 = k[0]
-		k2 = k[1]
-		k3 = k[2]
-		k4 = k[3]
+		self.K(x,t)
+		k1 = self.k[0]
+		k2 = self.k[1]
+		k3 = self.k[2]
+		k4 = self.k[3]
 		return (7*k1 + 6*k2 + 8*k3 + 3*k4)/24
+		
 
 	def h(self,x,t):
 		return self.step
@@ -133,21 +139,24 @@ class AdaptiveRK34(RK34):
 		return super().phi(x,t)
 
 	def h(self,x,t):
-		eR = np.float64(10**-7)
-		eA = np.float64(10**-14)
-		
-		k = self.k(x,t)
-		k1 = k[0]
-		k2 = k[1]
-		k3 = k[2]
-		k4 = k[3]
+		eR = np.float64(1e-7)
+		eA = np.float64(1e-14)
+		k1 = self.k[0]
+		k2 = self.k[1]
+		k3 = self.k[2]
+		k4 = self.k[3]
 
-		enew = np.linalg.norm((1/72)*(-5*k1+6*k2+8*k3-9*k4)*self.step)
-		xnew = np.linalg.norm(x + self.step*(7*k1 + 6*k2 + 8*k3 + 3*k4)/24)
+		enew1 = np.sqrt(np.dot( ((1/72)*(-5*k1+6*k2+8*k3-9*k4)*self.step).flatten(), (1/72)*(-5*k1+6*k2+8*k3-9*k4)*self.step)[0])
+		xnew1 = np.sqrt(np.dot((x + self.step*(7*k1 + 6*k2 + 8*k3 + 3*k4)/24).flatten(), x + self.step*(7*k1 + 6*k2 + 8*k3 + 3*k4)/24)[0])
+		# print (enew1.shape)
+		# enew = np.linalg.norm((1/72)*(-5*k1+6*k2+8*k3-9*k4)*self.step)
+		enew = enew1
+		xnew = xnew1
+		# xnew = np.linalg.norm(x + self.step*(7*k1 + 6*k2 + 8*k3 + 3*k4)/24)
 		hnew = self.step*(np.power(eR/(enew/(xnew+eA)),1/3))
 		self.step = hnew
 		return hnew
 
 
 	def solve(self):
-		super().solve()
+		super().solve() 

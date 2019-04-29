@@ -1,6 +1,9 @@
 ODE Verification Report
 ==================================================
-**Results are truncated to 12 significant figures**
+**Results displayed are truncated to 12 significant figures. This is done mainly for generating clean tables as shown below.**
+**Note that this truncation is only for display purposes. The solver methods themselves don't perform this truncation.**
+==================================================
+Table header variables:
 t = time
 x_true = Ground truth value of x(t)
 x_FE = Simulated value of x(t) using Forward Euler

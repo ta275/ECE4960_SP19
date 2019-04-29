@@ -41,6 +41,9 @@ RKNA.solve()
 RKA = AdaptiveRK34(init_t,end_t,init_x,f,step)
 RKA.solve()
 
+
+
+#Report and plot generation
 text = []
 
 
@@ -48,7 +51,10 @@ row_divider = "+----------------+----------------+----------------+-------------
 blank_row = "|  {0}  |  {1}  |  {2}  |  {3}  |\n"
 text.append("ODE Verification Report\n")
 text.append("==================================================\n")
-text.append("**Results are truncated to 12 significant figures**\n")
+text.append("**Results displayed are truncated to 12 significant figures. This is done mainly for generating clean tables as shown below.**\n")
+text.append("**Note that this truncation is only for display purposes. The solver methods themselves don't perform this truncation.**\n")
+text.append("==================================================\n")
+text.append("Table header variables:\n")
 text.append("t = time\nx_true = Ground truth value of x(t)\n")
 text.append("x_FE = Simulated value of x(t) using Forward Euler\n")
 text.append("x_RK34 = Simulated value of x(t) using RK34\n")
@@ -81,7 +87,7 @@ text.append(row_divider)
 text.append("|        t       |     x_true     |     x_RK34     |      |ex|      |\n")
 text.append(row_divider)
 
-file = open("reports/verification.txt", "w")
+file = open("reports/task3-verification/verification_results.txt", "w")
 for i in text:
 	file.write(i)
 
@@ -136,5 +142,4 @@ plt.plot(t_rka,e_rka, label = "Adaptive RK34")
 plt.xlabel(r"$|e_{x}|$")
 plt.ylabel(r"$t$")
 plt.legend()
-plt.savefig('reports/verification_plot.png')
-plt.show()
+plt.savefig('reports/task3-verification/error_plot.png')

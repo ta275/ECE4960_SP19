@@ -1,0 +1,9 @@
+ECE 4960 SPRING 2019
+Programming Assignment 4
+General Report
+Author: Tejas Advait (TA275)
+
+Three one-step for solving ODEs are implemented - Forward Euler, RK34, and RK34 with adaptive time stepping.
+These methods are encapsulated in the ODESolver class. For adaptive time stepping, the normalized error is used to guide the time steps. The ODE solvers are verified using the test problem and ground truth described in the assignment. The normalized error plot for this verification shows increasing error for the Forward Euler method, and very low error for RK34 and time adaptive RK34, as expected.
+
+For the simple RC circuit and Common-Source Amplifier simulation, Forward Euler and RK34 methods cause rapid overflow due to the nature of the transient large-signal current, whereas the time adaptive RK34 method takes a very very long amount of time to run. The time adaptive RK34 hasn't been able to successfully finish the simulations and thus the results are not reported, however, if the simulation is run partially one can observe the varying time steps taken by this method which prevents overflow.
