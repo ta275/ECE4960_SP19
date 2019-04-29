@@ -71,7 +71,7 @@ step2 = 0.2
 
 #ODE setup and solution with step size 1ns
 #Forward Euler###############################
-FE1 = ForwardEuler(init_t,end_t,init_x,f,step1)
+FE1 = ForwardEuler(init_t, end_t, init_x,f, step1)
 FE1_data = ODE_data(FE1)
 
 #RK34########################################
