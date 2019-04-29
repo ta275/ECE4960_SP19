@@ -107,7 +107,6 @@ report.write("==================================================================
 #Task 5
 ones = np.ones((outputNMOS.shape[0],1))
 outputNMOS = np.append(outputNMOS, ones, axis = 1)
-print(outputNMOS)
 def Id_ekv(x,a):
 	Is = a[0]
 	kap = a[1]
@@ -186,10 +185,9 @@ report.write("-------------------------------------\n")
 report.write("Absolute Deviation: {0}\n".format(V))
 report.write("Relative Deviation: {0}\n".format(d))
 report.write("-------------------------------------\n\n")
-report.write("Parameter Sensitivity")
+report.write("Parameter Sensitivity\n")
 report.write("-------------------------------------\n")
 report.write("Is Sensitivity:    {0}\n".format(DS_Is))
 report.write("kappa Sensitivity: {0}\n".format(DS_kap))
 report.write("Vth Sensitivity:   {0}\n".format(DS_Vth))
-
 report.close()
