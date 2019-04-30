@@ -27,6 +27,21 @@ def x(t):
 def ex(x_gnd,x_sim):
 	return  np.linalg.norm(x_gnd-x_sim)/np.linalg.norm(x_gnd)
 
+def ODE_data(ODE):
+	start = time.time()
+	ODE.solve()
+	end = time.time()
+	exec_time = end-start #Execution time
+	t = []
+	V1 = []
+	V2 = []
+	for i in range (len(ODE.solution)):
+		t.append(ODE.solution[i][1])
+		V1.append(ODE.solution[i][0][0])
+		V2.append(ODE.solution[i][0][1])
+
+	return (exec_time,t,V1,V2)
+
 init_x = np.array([[2]],dtype = np.float64)
 init_t = 0
 end_t = 5
@@ -70,9 +85,9 @@ text.append(row_divider)
 
 t_fe = []
 e_fe = []
-for i in range (FE.solution.shape[1]):
-	xi = FE.solution[:-1,i]
-	ti = FE.solution[-1,i]
+for i in range (len(FE.solution)):
+	xi = FE.solution[i][0]
+	ti = FE.solution[i][1]
 	er = ex(x(ti),xi)
 	t_fe.append(ti)
 	e_fe.append(er)
@@ -94,9 +109,9 @@ for i in text:
 text = []
 t_rkna = []
 e_rkna = []
-for i in range (RKNA.solution.shape[1]):
-	xi = RKNA.solution[:-1,i]
-	ti = RKNA.solution[-1,i]
+for i in range (len(RKNA.solution)):
+	xi = RKNA.solution[i][0]
+	ti = RKNA.solution[i][1]
 	er = ex(x(ti),xi)
 	t_rkna.append(ti)
 	e_rkna.append(er)
@@ -117,9 +132,9 @@ for i in text:
 text = []
 t_rka = []
 e_rka = []
-for i in range (RKA.solution.shape[1]):
-	xi = RKA.solution[:-1,i]
-	ti = RKA.solution[-1,i]
+for i in range (len(RKA.solution)):
+	xi = RKA.solution[i][0]
+	ti = RKA.solution[i][1]
 	er = ex(x(ti),xi)
 	t_rka.append(ti)
 	e_rka.append(er)

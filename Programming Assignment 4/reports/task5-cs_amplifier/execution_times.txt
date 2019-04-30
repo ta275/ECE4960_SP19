@@ -1,4 +1,4 @@
-Simple RC Circuit Execution Time Report
+Common-Source Amplifier Circuit Execution Time Report
 ==================================================
 **Results displayed are truncated to 12 significant figures. This is done mainly for generating clean tables as shown below.**
 **Note that this truncation is only for display purposes. The solver methods themselves don't perform this truncation.**
@@ -10,9 +10,9 @@ Simple RC Circuit Execution Time Report
 +----------------+----------------+----------------+
 |      RK34      |      1ns       |  0.0000000000  |
 +----------------+----------------+----------------+
-| Forward Euler  |     0.2ns      |  0.0168974399  |
+| Forward Euler  |     0.2ns      |  0.0160043239  |
 +----------------+----------------+----------------+
-|      RK34      |     0.2ns      |  0.0233335495  |
+|      RK34      |     0.2ns      |  0.0676746368  |
 +----------------+----------------+----------------+
-|     ARK34      |    Adaptive    |  0.2680201530  |
+|     ARK34      |    Adaptive    |  0.0993561744  |
 +----------------+----------------+----------------+
