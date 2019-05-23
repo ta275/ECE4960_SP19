@@ -1,0 +1,18 @@
+Common-Source Amplifier Circuit Execution Time Report
+==================================================
+**Results displayed are truncated to 12 significant figures. This is done mainly for generating clean tables as shown below.**
+**Note that this truncation is only for display purposes. The solver methods themselves don't perform this truncation.**
+==================================================
++----------------+----------------+----------------+
+|     Method     |    Step Size   | Execution Time |
++----------------+----------------+----------------+
+| Forward Euler  |      1ns       |  0.2198729515  |
++----------------+----------------+----------------+
+|      RK34      |      1ns       |  0.9116332530  |
++----------------+----------------+----------------+
+| Forward Euler  |     0.2ns      |  0.1249716281  |
++----------------+----------------+----------------+
+|      RK34      |     0.2ns      |  0.4530172348  |
++----------------+----------------+----------------+
+|     ARK34      |    Adaptive    |  0.5025186538  |
++----------------+----------------+----------------+

@@ -40,6 +40,8 @@ Is_opt = 0
 kap_opt = 0
 Vth_opt = 0
 extracted_p = 0
+data = []
+import pickle
 
 for Is in IS:
 	for kap in KAP:
@@ -66,6 +68,7 @@ for Is in IS:
 			extracted_p_nmos = OptNMOS.extractParam()
 
 			if extracted_p_nmos.size != 0:
+				
 				v = OptNMOS.objective(extracted_p_nmos)
 				if v < V:
 					V = v

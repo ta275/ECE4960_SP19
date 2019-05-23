@@ -41,7 +41,7 @@ class OPES:
 		self.Q = QNM(self.objective, self.model.num_param, self.init_param, self.tol,
 			self.step, self.max_iter)
 
-		self.residues = []
+		self.report_data = []
 		self.quad_conv = True
 
 	def objective(self,param):
@@ -49,15 +49,15 @@ class OPES:
 		Objective function to minimize.
 		"""
 		v = np.float64(0)
-		for i in self.measured:
-			v += (self.model.evaluate(i[:-1],param) - i[-1])**2
+		for i in range(self.measured.shape[0]):
+			v += (self.model.evaluate(self.measured[i,:-1],param) - self.measured[i,-1])**2
 
 		return v
 
 	def extractParam(self):
 		self.Q.updateParam()
 		self.quad_conv = self.Q.quad_conv
-		self.residues = self.Q.residues
+		self.report_data = self.Q.report_data
 		self.max_iter = self.Q.max_iter
 		self.init_param = self.Q.init_param
 		return self.init_param

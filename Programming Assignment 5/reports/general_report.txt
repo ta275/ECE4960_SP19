@@ -1,0 +1,13 @@
+ECE 4960 SPRING 2019
+Programming Assignment 4
+General Report
+Author: Tejas Advait (TA275)
+
+Three one-step for solving ODEs are implemented - Forward Euler, RK34, and RK34 with adaptive time stepping.
+These methods are encapsulated in the ODESolver class. For adaptive time stepping, the normalized error is used to guide the time steps. The ODE solvers are verified using the test problem and ground truth described in the assignment. The normalized error plot for this verification shows increasing error for the Forward Euler method, and very low error for RK34 and time adaptive RK34, as expected. These plots are in the directory task3-verification.
+
+Circuit simulation is performed with all the three methods with time steps of size 1ns followed by a step size of 0.2ns.
+
+For the simple RC circuit simulation all the methods produce very similar plots for V1. All the methods except Forward Euler with time step 1ns produce almost the same plot for V2; the Forward Euler method with time step 1ns overshoots at the extremas. Execution time for methods with step size 1ns is very minimal. Execution time is slightly more for Forward Euler with step size 0.2ns. RK34 with 0.2ns time steps takes a little bit more time than Forward Euler with 0.2ns time steps. Finally, adaptive RK34 has the longest execution time. Having said this, the execution is very minimal and not very different from each other. Slightly different execution times may be obtained whenever simple_rc.py is executed. These plots and execution times are in the directory task4-simple_rc.
+
+For the common-source amplifier circuit simulation all the methods produce very similar plots for V1. Again, all the methods except Forward Euler with time step 1ns overshoots at the minimum for V2, but converges to the plots produced by the other methods. The execution time comparison is the same as for the RC circuit simulation. The plot and execution times are in the directory task5-cs_amplifier.

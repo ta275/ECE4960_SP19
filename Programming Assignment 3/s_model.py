@@ -44,7 +44,7 @@ class S_model:
 		n = indeps.shape[0]
 		Y = np.zeros((n,1))
 		for i in range(n):
-			x = indeps[i]
+			x = indeps[i,:]
 			y = self.evaluate(x,param)
 			Y[i,0] = y
 
