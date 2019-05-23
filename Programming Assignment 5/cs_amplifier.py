@@ -8,7 +8,7 @@ Author: Tejas Advait (TA275)
 import matplotlib.pyplot as plt
 
 import numpy as np
-from ode_solver import ForwardEuler, RK34, AdaptiveRK34
+from ode_solver import ForwardEuler, RK34, AdaptiveRK34, TRBDF2
 from current_source import *
 import time
 
@@ -87,6 +87,10 @@ TRBDF2NA1_data = ODE_data(TRBDF2NA1)
 FE2 = ForwardEuler(init_t,end_t,init_x,f,step2)
 FE2_data = ODE_data(FE2)
 
+#TR-BDF2###############################
+TRBDF2NA2 = TRBDF2(init_t,end_t,init_x,f,step1)
+TRBDF2NA2_data = ODE_data(TRBDF2NA2)
+
 #RK34########################################
 RKNA2 = RK34(init_t,end_t,init_x,f,step2)
 RKNA2_data = ODE_data(RKNA2)
@@ -100,7 +104,10 @@ data = [(FE1_data,"Forward Euler with step 1ns"),
 		(RKNA1_data,"RK34 with step 1ns"),
 		(FE2_data,"Forward Euler with step 0.2ns"),
 		(RKNA2_data,"RK34 with step 0.2 ns"),
-		(RKA_data, "Adaptive RK34")]
+		(RKA_data, "Adaptive RK34"),
+		(TRBDF2NA1_data, "TR-BDF2 with step 1ns"),
+		(TRBDF2NA2_data, "TR-BDF2 with step 0.2ns")]
+
 
 
 #Report generation#################################################################################
@@ -122,14 +129,18 @@ text.append(blank_row.format("Forward Euler", "    10ps    ",("%.12f"%FE1_data[0
 text.append(row_divider)
 text.append(blank_row.format("     RK34    ", "    20ps    ",("%.12f"%RKNA1_data[0])[:12]))
 text.append(row_divider)
+text.append(blank_row.format("    TR-BDF2  ", "    10ps    ",("%.12f"%TRBDF2NA1_data[0])[:12]))
+text.append(row_divider)
 text.append(blank_row.format("Forward Euler", "    10ps    ",("%.12f"%FE2_data[0])[:12]))
 text.append(row_divider)
 text.append(blank_row.format("     RK34    ", "    20ps    ",("%.12f"%RKNA2_data[0])[:12]))
 text.append(row_divider)
+text.append(blank_row.format("    TR-BDF2  ", "    20ps    ",("%.12f"%TRBDF2NA2_data[0])[:12]))
+text.append(row_divider)
 text.append(blank_row.format("    ARK34    ", "  Adaptive  ",("%.12f"%RKA_data[0])[:12]))
 text.append(row_divider)
 
-file = open("reports/task5-cs_amplifier/execution_times.txt", "w")
+file = open("reports/cs_amplifier/execution_times.txt", "w")
 for i in text:
 	file.write(i)
 file.close()
@@ -148,7 +159,7 @@ for i in data:
 plt.xlabel(r"$Time$ (ns)")
 plt.ylabel(r"$V1$ (V)")
 plt.legend()
-plt.savefig('reports/task5-cs_amplifier/V1_vs_Time.png')
+plt.savefig('reports/cs_amplifier/V1_vs_Time.png')
 
 #Plot for V2
 fig2 = plt.figure()
@@ -161,4 +172,4 @@ for i in data:
 plt.xlabel(r"$Time$ (ns)")
 plt.ylabel(r"$V2$ (V)")
 plt.legend()
-plt.savefig('reports/task5-cs_amplifier/V2_vs_Time.png')
+plt.savefig('reports/cs_amplifier/V2_vs_Time.png')
