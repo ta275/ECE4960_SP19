@@ -1,6 +1,6 @@
 """
 ECE 4960 SPRING 2019
-Programming Assignment 4
+Programming Assignment 5
 Current Sources
 Author: Tejas Advait (TA275)
 """
@@ -35,6 +35,8 @@ def Id_ekv(x,Is,kap,Vth):
 	Id = Is*(np.log(1 + np.exp(kap*(Vgs-Vth)/(2*Vt))))**2 \
 	- Is*(np.log(1 + np.exp((kap*(Vgs-Vth) - Vds)/(2*Vt))))**2
 	return Id
+
+# def AC_Current
 
 
 #Uncomment the following lines to see the plot of the transient large signal

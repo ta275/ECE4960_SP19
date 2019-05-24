@@ -1,31 +1,28 @@
 """
 ECE 4960 SPRING 2019
 Programming Assignment 5
-Simple RC Circuit Assembly
+Parallel RLC Natural Response
 Author: Tejas Advait (TA275)
 """
 
 import numpy as np
 from ode_solver import ForwardEuler, RK34, AdaptiveRK34, TRBDF2
-from current_source import *
 import time
 import matplotlib.pyplot as plt
 
 #All physical values are in SI units
 
 #R and C values
-R1 = 1e4
-R2 = 1e4
-R3 = 1e4
-C1 = 1e-12
-C2 = 1e-12
+R = 20e3
+L = 8
+C = 0.125e-6
 
 
 def f(x,t):
 	V1 = x[0]
 	V2 = x[1]
-	f1 = -1*((C1*R1)**-1 + (C1*R2)**-1)*V1 + ((C1*R2)**-1)*V2 + large_signal(t)/C1
-	f2 = V1/(C2*R2) - V2*((C2*R2)**-1 + (C2*R3)**-1)
+	f1 = V2
+	f2 = -V2/(R*C) - (V1/(L*C))
 	A = np.zeros((2,1),dtype = np.float64)
 	A[0,0] = f1
 	A[1,0] = f2
@@ -37,8 +34,7 @@ def ODE_data(ODE):
 	1) exec_time: Execution time for the solver
 	2) t: Timestamps in ns
 	3) V1: V1 values at the timestamps
-	4) V2: V2 values at the timestamps
-	5) V12: V1-V2 values at the timestamps
+	4) dVdt: dV1/dt values at the timestamps
 	"""
 	start = time.time()
 	ODE.solve()
@@ -46,23 +42,22 @@ def ODE_data(ODE):
 	exec_time = end-start #Execution time
 	t = []
 	V1 = []
-	V2 = []
-	V12 = []
+	dVdt = []
 	for i in range (len(ODE.solution)):
-		t.append(ODE.solution[i][1]*1e9)
+		t.append(ODE.solution[i][1])
 		V1.append(ODE.solution[i][0][0,0])
-		V2.append(ODE.solution[i][0][1,0])
-		V12.append(ODE.solution[i][0][0,0]-ODE.solution[i][0][1,0])
+		dVdt.append(ODE.solution[i][0][1,0])
 
-	return (exec_time,t,V1,V2,V12)
+	return (exec_time,t,V1,dVdt)
 
 
 #Initial Conditions and Step Size
 init_x = np.zeros((2,1),dtype = np.float64)
+init_x[1,0] = 1
 init_t = 0
-end_t = 100e-9
-step1 = 1e-9
-step2 = 0.2e-9
+end_t = 0.06
+step1 = 1e-4
+step2 = 0.2e-4
 
 #ODE setup and solution with step size 1ns
 #Forward Euler###############################
@@ -98,13 +93,15 @@ RKA_data = ODE_data(RKA)
 
 
 #Combining all the data
-data = [(FE1_data,"Forward Euler with step 1ns"),
-		(RKNA1_data,"RK34 with step 1ns"),
-		(FE2_data,"Forward Euler with step 0.2ns"),
-		(RKNA2_data,"RK34 with step 0.2 ns"),
+data = [(FE1_data,"Forward Euler with step 0.1ms"),
+		(RKNA1_data,"RK34 with step 0.1ms"),
+		(FE2_data,"Forward Euler with step 0.02ms"),
+		(RKNA2_data,"RK34 with step 0.02ms"),
 		(RKA_data, "Adaptive RK34"),
-		(TRBDF2NA1_data, "TR-BDF2 with step 1ns"),
-		(TRBDF2NA2_data, "TR-BDF2 with step 0.2ns")]
+		(TRBDF2NA1_data, "TR-BDF2 with step 0.1ms"),
+		(TRBDF2NA2_data, "TR-BDF2 with step 0.02ms")
+		]
+		
 
 
 #Report generation#################################################################################
@@ -122,22 +119,22 @@ text.append("==================================================\n")
 text.append(row_divider)
 text.append("|     Method     |    Step Size   | Execution Time |\n")
 text.append(row_divider)
-text.append(blank_row.format("Forward Euler", "    1ns     ",("%.12f"%FE1_data[0])[:12]))
+text.append(blank_row.format("Forward Euler", "   0.1ms    ",("%.12f"%FE1_data[0])[:12]))
 text.append(row_divider)
-text.append(blank_row.format("     RK34    ", "    1ns     ",("%.12f"%RKNA1_data[0])[:12]))
+text.append(blank_row.format("     RK34    ", "   0.1ms    ",("%.12f"%RKNA1_data[0])[:12]))
 text.append(row_divider)
-text.append(blank_row.format("    TR-BDF2  ", "    1ns     ",("%.12f"%TRBDF2NA1_data[0])[:12]))
+text.append(blank_row.format("    TR-BDF2  ", "   0.1ms    ",("%.12f"%TRBDF2NA1_data[0])[:12]))
 text.append(row_divider)
-text.append(blank_row.format("Forward Euler", "   0.2ns    ",("%.12f"%FE2_data[0])[:12]))
+text.append(blank_row.format("Forward Euler", "   0.02ms   ",("%.12f"%FE2_data[0])[:12]))
 text.append(row_divider)
-text.append(blank_row.format("     RK34    ", "   0.2ns    ",("%.12f"%RKNA2_data[0])[:12]))
+text.append(blank_row.format("     RK34    ", "   0.02ms   ",("%.12f"%RKNA2_data[0])[:12]))
 text.append(row_divider)
-text.append(blank_row.format("    TR-BDF2  ", "   0.2ns    ",("%.12f"%TRBDF2NA2_data[0])[:12]))
+text.append(blank_row.format("    TR-BDF2  ", "   0.02ms   ",("%.12f"%TRBDF2NA2_data[0])[:12]))
 text.append(row_divider)
 text.append(blank_row.format("    ARK34    ", "  Adaptive  ",("%.12f"%RKA_data[0])[:12]))
 text.append(row_divider)
 
-file = open("reports/simple_rc/execution_times.txt", "w")
+file = open("reports/resonator/execution_times.txt", "w")
 for i in text:
 	file.write(i)
 file.close()
@@ -145,41 +142,28 @@ file.close()
 
 #Plot generation###################################################################################
 
-#Plot for V1
+#Plot for V
 fig = plt.figure()
-plt.title(r"$V1$ vs $Time$")
+plt.title(r"$V$ vs $Time$")
 for i in data:
 	t = i[0][1]
 	v1 = i[0][2]
 	plt.plot(t,v1, label = i[1])
 
-plt.xlabel(r"$Time$ (ns)")
-plt.ylabel(r"$V1$ (V)")
+plt.xlabel(r"$Time$ (s)")
+plt.ylabel(r"$V$ (V)")
 plt.legend()
-plt.savefig('reports/simple_rc/V1_vs_Time.png')
+plt.savefig('reports/resonator/V1_vs_Time.png')
 
-#Plot for V2
+#Plot for dV/dt
 fig2 = plt.figure()
-plt.title(r"$V2$ vs $Time$")
+plt.title(r"$dV/dt$ vs $Time$")
 for i in data:
 	t = i[0][1]
 	v2 = i[0][3]
 	plt.plot(t,v2, label = i[1])
 
-plt.xlabel(r"$Time$ (ns)")
-plt.ylabel(r"$V2$ (V)")
+plt.xlabel(r"$Time$ (s)")
+plt.ylabel(r"$dV/dt$ (V/s)")
 plt.legend()
-plt.savefig('reports/simple_rc/V2_vs_Time.png')
-
-#Plot for V1-V2
-fig2 = plt.figure()
-plt.title(r"$V1-V2$ vs $Time$")
-for i in data:
-	t = i[0][1]
-	v12 = i[0][4]
-	plt.plot(t,v12, label = i[1])
-
-plt.xlabel(r"$Time$ (ns)")
-plt.ylabel(r"$V1-V2$ (V)")
-plt.legend()
-plt.savefig('reports/simple_rc/V12_vs_Time.png')
+plt.savefig('reports/resonator/dVdt_vs_Time.png')

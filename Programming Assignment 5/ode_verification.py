@@ -1,6 +1,6 @@
 """
 ECE 4960 SPRING 2019
-Programming Assignment 4
+Programming Assignment 5
 ODE Solver Verification
 Author: Tejas Advait (TA275)
 """
@@ -8,15 +8,13 @@ Author: Tejas Advait (TA275)
 import matplotlib.pyplot as plt
 
 import numpy as np
-from ode_solver import ForwardEuler, RK34, AdaptiveRK34, TRBDF2
+from ode_solver import ForwardEuler, RK34, AdaptiveRK34, TRBDF2, AdaptiveTRBDF2
 
 def f(x,t):
 	"""
 	dx/dt = f(x,t)
 	"""
 	return np.array([4*np.exp(0.8*t)-0.5*x[0]],dtype = np.float64).reshape(1,1)
-# def f1(x,t):
-# 	return np.array([4*np.exp(0.8*t)-0.5*x],dtype = np.float64).reshape(1,1)
 
 def x(t):
 	"""
@@ -60,6 +58,9 @@ RKA.solve()
 TR_BDF2NA = TRBDF2(init_t,end_t,init_x,f,step)
 TR_BDF2NA.solve()
 
+TR_BDF2A = AdaptiveTRBDF2(init_t,end_t,init_x,f,step)
+TR_BDF2A.solve()
+
 
 
 #Report and plot generation
@@ -79,6 +80,7 @@ text.append("x_FE = Simulated value of x(t) using Forward Euler\n")
 text.append("x_RK34 = Simulated value of x(t) using RK34\n")
 text.append("x_ARK34 = Simulated value of x(t) using Adaptive RK34\n")
 text.append("x_TR-BDF2 = Simulated value of x(t) using TR-BDF2\n")
+text.append("x_TR-BDF2A = Simulated value of x(t) using Adaptive TR-BDF2\n")
 text.append("|ex| = Normalized error\n\n")
 text.append("==================================================\n")
 text.append("Forward Euler\n")
@@ -174,6 +176,34 @@ for i in range (len(TR_BDF2NA.solution)):
 for i in text:
 	file.write(i)
 
+text = []
+text.append("\n==================================================\n")
+text.append("TR-BDF2A\n")
+text.append("==================================================\n")
+text.append(row_divider)
+text.append("|        t       |     x_true     |   x_TR-BDF2A   |      |ex|      |\n")
+text.append(row_divider)
+
+for i in text:
+	file.write(i)
+
+text = []
+t_trbdfa = []
+e_trbdfa = []
+for i in range (len(TR_BDF2A.solution)):
+	xi = TR_BDF2A.solution[i][0]
+	ti = TR_BDF2A.solution[i][1]
+	er = ex(x(ti),xi)
+	t_trbdfa.append(ti)
+	e_trbdfa.append(er)
+	line = blank_row.format(("%.10f"%ti)[:12], ("%.10f"%x(ti)[0])[:12], ("%.10f"%xi[0])[:12], ("%.10f"%er)[:12])
+	text.append(line)
+	text.append(row_divider)
+
+
+for i in text:
+	file.write(i)
+
 file.close()
 
 fig = plt.figure()
@@ -183,6 +213,7 @@ plt.plot(t_fe,e_fe, label = "Forward Euler")
 plt.plot(t_rkna,e_rkna, label = "RK34")
 plt.plot(t_rka,e_rka, label = "Adaptive RK34")
 plt.plot(t_trbdf,e_trbdf, label = "TR-BDF2")
+plt.plot(t_trbdfa,e_trbdfa, label = "Adaptive TR-BDF2")
 
 plt.xlabel(r"$|e_{x}|$")
 plt.ylabel(r"$t$")

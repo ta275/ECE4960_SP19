@@ -1,4 +1,4 @@
-Common-Source Amplifier Circuit Execution Time Report
+High-Pass Filter Execution Time Report
 ==================================================
 **Results displayed are truncated to 12 significant figures. This is done mainly for generating clean tables as shown below.**
 **Note that this truncation is only for display purposes. The solver methods themselves don't perform this truncation.**
@@ -6,17 +6,17 @@ Common-Source Amplifier Circuit Execution Time Report
 +----------------+----------------+----------------+
 |     Method     |    Step Size   | Execution Time |
 +----------------+----------------+----------------+
-| Forward Euler  |      10ps      |  0.2583606243  |
+| Forward Euler  |     1e-04      |  0.1033351421  |
 +----------------+----------------+----------------+
-|      RK34      |      20ps      |  1.2222273349  |
+|      RK34      |     1e-04      |  0.5218310356  |
 +----------------+----------------+----------------+
-|     TR-BDF2    |      10ps      |  41.174723386  |
+|     TR-BDF2    |     1e-04      |  32.657373905  |
 +----------------+----------------+----------------+
-| Forward Euler  |      10ps      |  0.1166100502  |
+| Forward Euler  |     2e-05      |  0.5489883422  |
 +----------------+----------------+----------------+
-|      RK34      |      20ps      |  0.4194192886  |
+|      RK34      |     2e-05      |  2.5157649517  |
 +----------------+----------------+----------------+
-|     TR-BDF2    |      20ps      |  46.080828428  |
+|     TR-BDF2    |     2e-05      |  173.39337921  |
 +----------------+----------------+----------------+
-|     ARK34      |    Adaptive    |  0.5684957504  |
+|     ARK34      |    Adaptive    |  31.967003583  |
 +----------------+----------------+----------------+

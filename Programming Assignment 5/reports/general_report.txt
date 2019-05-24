@@ -1,13 +1,27 @@
 ECE 4960 SPRING 2019
-Programming Assignment 4
+Programming Assignment 5
 General Report
 Author: Tejas Advait (TA275)
 
-Three one-step for solving ODEs are implemented - Forward Euler, RK34, and RK34 with adaptive time stepping.
-These methods are encapsulated in the ODESolver class. For adaptive time stepping, the normalized error is used to guide the time steps. The ODE solvers are verified using the test problem and ground truth described in the assignment. The normalized error plot for this verification shows increasing error for the Forward Euler method, and very low error for RK34 and time adaptive RK34, as expected. These plots are in the directory task3-verification.
+Three one-step method for solving ODEs are implemented - Forward Euler, RK34, and RK34 with adaptive time stepping. Additionally a multistep method, TR-BDF2, is also implemented.
+These methods are encapsulated in the ODESolver class. For adaptive time stepping, the normalized error is used to guide the time steps. The ODE solvers are verified using the test problem and ground truth described in assignment four. The normalized error plot for this verification shows increasing error for the Forward Euler method, and very low error for RK34 and time adaptive RK34, as expected. Also, the error for TR-BDF2 is low, but it is higher than the error for RK methods since TR-BDF2 is only second-order accurate. This was also expected. These plots are in the directory ode-verification.
 
-Circuit simulation is performed with all the three methods with time steps of size 1ns followed by a step size of 0.2ns.
+Code has been inherited from assignment 2 (full matrix implementation and direct full matrix solver), assignment 3 (modification of quasi-newton minimization to obtain a quasi-newton non linear root finder), and assignment 4. An abstraction for filter response has been designed in filter.py which is used to simulate and generate reports and plots for the low-pass, high-pass, band-pass filters.
 
-For the simple RC circuit simulation all the methods produce very similar plots for V1. All the methods except Forward Euler with time step 1ns produce almost the same plot for V2; the Forward Euler method with time step 1ns overshoots at the extremas. Execution time for methods with step size 1ns is very minimal. Execution time is slightly more for Forward Euler with step size 0.2ns. RK34 with 0.2ns time steps takes a little bit more time than Forward Euler with 0.2ns time steps. Finally, adaptive RK34 has the longest execution time. Having said this, the execution is very minimal and not very different from each other. Slightly different execution times may be obtained whenever simple_rc.py is executed. These plots and execution times are in the directory task4-simple_rc.
+Circuit simulation is performed with all the four methods.
 
-For the common-source amplifier circuit simulation all the methods produce very similar plots for V1. Again, all the methods except Forward Euler with time step 1ns overshoots at the minimum for V2, but converges to the plots produced by the other methods. The execution time comparison is the same as for the RC circuit simulation. The plot and execution times are in the directory task5-cs_amplifier.
+The unusual behaviour of the common-source amplifier from assignment four has been corrected in this simulation. Additionally, simulations for natural response of the parallel RLC circuit, low-pass filter, high-pass filter, and band-pass filter are also performed. All the filters consist of RLC components thus, this assignment includes the simulation of inductors.
+
+The natural response of RLC resonator is in the directory reports/resonator. We can clearly see the oscillation with exponential decay of V1. The initial condition was V = 0Vand dV1/dt = 1V/s.
+
+Each of the filters are simulated from 0s to 0.2s. The step sizes used are 0.1ms and 0.02ms. All the input signals have unit amplitude.
+
+The low-pass filter is fed with a signal which is a superposition of three sine-waves with frequencies 20Hz, 500Hz and 140Hz. The cut-off frequency is 44.67Hz. Hence, this filter should only allow the 20Hz sine-wave to pass. So there should be four peaks in 0.2s. This can be seen from the V vs Time plot in the directory reports/low_pass.
+
+The high-pass filter is fed with a signal which is a superposition of two sine-waves with frequencies 10Hz and 500Hz. The cut-off frequency is 410.94Hz. Hence, this filter should only allow the 500Hz sine-wave to pass. So there should be 100 peaks in 0.2s. This can be seen from the V vs Time plot in the directory reports/high_pass.
+
+The band-pass filter is fed with a signal which is a superposition of three sine-waves with frequencies 10Hz, 140Hz, and 500Hz. The center-frequency is 141.28Hz. Hence, this filter should only allow the 140Hz sine-wave to pass. So there should be 28 peaks in 0.2s. This can be seen from the V vs Time plot in the directory reports/band_pass.
+
+The circuit diagram used for resonators and filters is provided in the file named "circuits.pdf". The corresponding differential equations used is also present in that file.
+
+TR-BDF2 is supposed to be more computationally efficient than RK34. However, the non-linear root finding process in TR-BDF2 makes it very slow compared to all the other methods. Time Adaptive TR-BDF2 has also been implemented but it is extremely slow compared to all the other methods since it uses non-linear root finding in the time adaptive step as well as everywhere else with the trapezoidal euler setup.

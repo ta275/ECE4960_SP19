@@ -8,10 +8,6 @@ Author: Tejas Advait (TA275)
 from nrsolver import NRSolver
 import numpy as np
 
-# def f1(x):
-# 	x = np.float64(x)
-# 	return x + np.exp(x)
-
 f1 = lambda x: np.array([np.float64(x[0,0]) + np.exp(np.float64(x[0,0]))]).reshape((1,1))
 
 def f2(x):

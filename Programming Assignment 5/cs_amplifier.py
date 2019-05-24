@@ -1,6 +1,6 @@
 """
 ECE 4960 SPRING 2019
-Programming Assignment 4
+Programming Assignment 5
 Common Source Amplifier Assembly
 Author: Tejas Advait (TA275)
 """
@@ -55,7 +55,7 @@ def ODE_data(ODE):
 	V2 = []
 	V12 = []
 	for i in range (len(ODE.solution)):
-		t.append(ODE.solution[i][1]*1e9)
+		t.append(ODE.solution[i][1])
 		V1.append(ODE.solution[i][0][0,0])
 		V2.append(ODE.solution[i][0][1,0])
 
@@ -100,13 +100,13 @@ RKA = AdaptiveRK34(init_t,end_t,init_x,f,step1)
 RKA_data = ODE_data(RKA)
 
 #Combining all the data
-data = [(FE1_data,"Forward Euler with step 1ns"),
-		(RKNA1_data,"RK34 with step 1ns"),
-		(FE2_data,"Forward Euler with step 0.2ns"),
-		(RKNA2_data,"RK34 with step 0.2 ns"),
+data = [(FE1_data,"Forward Euler with step 10ps"),
+		(RKNA1_data,"RK34 with step 10ps"),
+		(FE2_data,"Forward Euler with step 20ps"),
+		(RKNA2_data,"RK34 with step 20ps"),
 		(RKA_data, "Adaptive RK34"),
-		(TRBDF2NA1_data, "TR-BDF2 with step 1ns"),
-		(TRBDF2NA2_data, "TR-BDF2 with step 0.2ns")]
+		(TRBDF2NA1_data, "TR-BDF2 with step 10ps"),
+		(TRBDF2NA2_data, "TR-BDF2 with step 20ps")]
 
 
 
@@ -156,7 +156,7 @@ for i in data:
 	v1 = i[0][2]
 	plt.plot(t,v1, label = i[1])
 
-plt.xlabel(r"$Time$ (ns)")
+plt.xlabel(r"$Time$ (s)")
 plt.ylabel(r"$V1$ (V)")
 plt.legend()
 plt.savefig('reports/cs_amplifier/V1_vs_Time.png')
@@ -169,7 +169,7 @@ for i in data:
 	v2 = i[0][3]
 	plt.plot(t,v2, label = i[1])
 
-plt.xlabel(r"$Time$ (ns)")
+plt.xlabel(r"$Time$ (s)")
 plt.ylabel(r"$V2$ (V)")
 plt.legend()
 plt.savefig('reports/cs_amplifier/V2_vs_Time.png')

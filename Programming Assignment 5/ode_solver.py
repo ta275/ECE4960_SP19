@@ -157,6 +157,8 @@ class TRBDF2(ODESolver):
 		super().__init__(init_t,end_t,init_x,f,step)
 		self.gam = 2 - np.sqrt(np.float64(2))
 		self.num_param = self.init_x.shape[0]
+		self.a = 1 - self.gam
+		self.b = self.a + 1
 
 	def phi(self,x,t):
 		pass
@@ -168,19 +170,17 @@ class TRBDF2(ODESolver):
 		x_old = self.init_x
 		t_old = self.init_t
 		while t_old < self.end_t:
-			a = (1-self.gam)
-			b = (2-self.gam)
 
 			f_tr = lambda xgam: xgam - x_old - \
 			(self.gam*self.step/2)*(self.f(x_old,t_old) + self.f(xgam,t_old+self.gam*self.step))
 			NR_tr = NRSolver(f_tr,self.num_param,x_old)
 			x_gam = NR_tr.solve()
 
-			f_bdf2 = lambda xnew: xnew + x_old*((a**2)/(self.gam*b))\
-			- x_gam/(self.gam*b) - (self.step*a*self.f(xnew,t_old + self.step)/b)
+			f_bdf2 = lambda xnew: xnew + x_old*((self.a**2)/(self.gam*self.b))\
+			- x_gam/(self.gam*self.b) - (self.step*self.a*self.f(xnew,t_old + self.step)/self.b)
 
-			NR_bdf2 = NRSolver(f_bdf2, self.num_param,-1*x_old*((a**2)/(self.gam*b)\
-			+ x_gam/(self.gam*b)))
+			NR_bdf2 = NRSolver(f_bdf2, self.num_param,-1*x_old*((self.a**2)/(self.gam*self.b)\
+			+ x_gam/(self.gam*self.b)))
 
 			x_new = NR_bdf2.solve()
 			
@@ -191,4 +191,63 @@ class TRBDF2(ODESolver):
 			self.solution.append(sol)
 
 
-# class AdaptiveTRBDF2(TRBDF2)
+# class AdaptiveTRBDF2(TRBDF2):
+# 	def __init__(self,init_t,end_t,init_x,f,step):
+# 		super().__init__(init_t,end_t,init_x,f,step)
+
+# 	def phi(self,x,t):
+# 		pass
+
+# 	def h(self,x,t):
+# 		eR = np.float64(1e-7)
+# 		eA = np.float64(1e-14)
+
+		
+
+# 		f_tr = lambda xgam: xgam - x - \
+# 		(self.gam*self.step/2)*(self.f(x,t) + self.f(xgam,t+self.gam*self.step))
+# 		NR_tr = NRSolver(f_tr,self.num_param,x)
+# 		x_gam = NR_tr.solve()
+
+# 		f_bdf2 = lambda xnew: xnew + x*((self.a**2)/(self.gam*self.b))\
+# 		- x_gam/(self.gam*self.b) - (self.step*self.a*self.f(xnew,t + self.step)/self.b)
+
+# 		NR_bdf2 = NRSolver(f_bdf2, self.num_param,-1*x*((self.a**2)/(self.gam*self.b)\
+# 		+ x_gam/(self.gam*self.b)))
+
+# 		x_new = NR_bdf2.solve()
+
+# 		er = ((3*(self.gam**2)-4*self.gam+2)/(6*(self.gam-2)))*(self.f(x,t)/self.gam -\
+# 		 self.f(x_gam,t+self.step*self.gam)/(self.gam*self.a) + self.f(x_new,t+self.step)/self.gam)
+
+# 		enew_mag = np.sqrt(np.dot(er.flatten(), er)[0])
+# 		xnew_mag = np.sqrt(np.dot(x_new.flatten(), x_new)[0])
+# 		hnew = self.step*(np.power(eR/(enew_mag/(xnew_mag+eA)),1/3))
+# 		self.step = hnew
+# 		return hnew
+
+# 	def solve(self):
+# 		x_old = self.init_x
+# 		t_old = self.init_t
+# 		while t_old < self.end_t:
+# 			self.h(x_old,t_old)
+
+# 			f_tr = lambda xgam: xgam - x_old - \
+# 			(self.gam*self.step/2)*(self.f(x_old,t_old) + self.f(xgam,t_old+self.gam*self.step))
+# 			NR_tr = NRSolver(f_tr,self.num_param,x_old)
+# 			x_gam = NR_tr.solve()
+
+# 			f_bdf2 = lambda xnew: xnew + x_old*((self.a**2)/(self.gam*self.b))\
+# 			- x_gam/(self.gam*self.b) - (self.step*self.a*self.f(xnew,t_old + self.step)/self.b)
+
+# 			NR_bdf2 = NRSolver(f_bdf2, self.num_param,-1*x_old*((self.a**2)/(self.gam*self.b)\
+# 			+ x_gam/(self.gam*self.b)))
+
+# 			x_new = NR_bdf2.solve()
+			
+# 			t_old += self.step
+# 			x_old = x_new
+			
+# 			sol = [x_new,t_old]
+# 			self.solution.append(sol)
+# 	
