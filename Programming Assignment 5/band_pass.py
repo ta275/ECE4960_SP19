@@ -33,8 +33,8 @@ def F(R,L,C,VS,x,t):
 	
 	f1 = i1
 	f2 = V1
-	f3 = ((np.cos(a*t)*a + np.cos(b*t)*b + np.cos(c*t)*c) - V1 - (i/C))/L
-	f4 = R*((np.cos(a*t)*a + np.cos(b*t)*b + np.cos(c*t)*c) - V1 - (i/C))/L
+	f3 = ((VS(t+0.5e-6)-VS(t-0.5e-6))/1e-6 - V1 - (i/C))/L
+	f4 = R*((VS(t+0.5e-6)-VS(t-0.5e-6))/1e-6 - V1 - (i/C))/L
 	A = np.zeros((4,1),dtype = np.float64)
 	A[0,0] = f1
 	A[1,0] = f2

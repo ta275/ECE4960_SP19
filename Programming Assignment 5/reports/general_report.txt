@@ -1,4 +1,4 @@
-ECE 4960 SPRING 2019
+ ECE 4960 SPRING 2019
 Programming Assignment 5
 General Report
 Author: Tejas Advait (TA275)
@@ -12,7 +12,7 @@ Circuit simulation is performed with all the four methods.
 
 The unusual behaviour of the common-source amplifier from assignment four has been corrected in this simulation. Additionally, simulations for natural response of the parallel RLC circuit, low-pass filter, high-pass filter, and band-pass filter are also performed. All the filters consist of RLC components thus, this assignment includes the simulation of inductors.
 
-The natural response of RLC resonator is in the directory reports/resonator. We can clearly see the oscillation with exponential decay of V1. The initial condition was V = 0Vand dV1/dt = 1V/s.
+The natural response of RLC resonator is in the directory reports/resonator. We can clearly see the oscillation with exponential decay of V1. The initial condition was V = 0Vand dV1/dt = 1V/s. The resonant frequency is 159.15Hz. There should be around 4 oscillations in 0.02s. This can be seen from the V1 vs Time plot in the directory reports/resonator.
 
 Each of the filters are simulated from 0s to 0.2s. The step sizes used are 0.1ms and 0.02ms. All the input signals have unit amplitude.
 
