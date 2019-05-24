@@ -8,6 +8,9 @@ Following assignments have been completed:
 * **Programming Assignment 2:  Modular Testing in Sparse Matrix Solvers**
 * **Homework 2 [Programming HW #1]: Differentiation in Local Analysis**
 * **Homework 4 [Programming HW #2]: Applying the Wilkinson Principle to Sparse Matrix Computation**
+* **Programming Assignment 3:  Parameter Extraction from Least-Squares Fitting**
+* **Programming Assignment 4:  Compact SPICE for ODE Solution**
+* **Programming Assignment 5:  Extension of SPICE for ODE Solution**
 
 
 ## Author
