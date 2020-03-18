@@ -1,4 +1,4 @@
-# Programming Assignment 1: Arithmetic Exception Handling
+# PA1: Arithmetic Exception Handling
 
 This directory contains the implementation of a utility program that can observe and validate the exception handling of the integer and floating-point arithmetic in Python 3.7.0. The exception is validated against IEEE 754 standard for integer and floating-point representation by binary bits.
 
@@ -29,6 +29,6 @@ Run the main.py file in Python 3.7 to generate the reports.
 
 ## Acknowledgments
 
-* Prof. Edwin Kan for providing the assignment details and continuous guidance.
+* Prof. Edwin Kan for theoretical details and continuous guidance.
 
 * "Unbounded Spigot Algorithms for the Digits of Pi" by Jeremy Gibbons. The paper can be found [here](http://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/spigot.pdf).
