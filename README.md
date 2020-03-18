@@ -1,16 +1,16 @@
-# ECE 4960: Computational and Software Engineering
+# Computational and Software Engineering
 
-This directory contains the implementations of all the programming assignments, hacker practices, and homework assignments for a class on computational and software engineering at Cornell University. Python 3.7 is used as the primary programming language for these implementations.
+This directory contains the implementation of a sparse matrix representation data structure, numerical methods for calculating derivatives and definite integrals, numerical linear-equation solvers based on the Newton-Rhapson method, least-squares fitting, and ordinary-differential equation solvers to simulate electrical circuits.
 
-Following assignments have been completed:
+Python 3.7 is used as the primary programming language for these implementations.
 
-* **Programming Assignment 1: Arithmetic Exception Handling**
-* **Programming Assignment 2:  Modular Testing in Sparse Matrix Solvers**
-* **Homework 2 [Programming HW #1]: Differentiation in Local Analysis**
-* **Homework 4 [Programming HW #2]: Applying the Wilkinson Principle to Sparse Matrix Computation**
-* **Programming Assignment 3:  Parameter Extraction from Least-Squares Fitting**
-* **Programming Assignment 4:  Compact SPICE for ODE Solution**
-* **Programming Assignment 5:  Extension of SPICE for ODE Solution**
+* **PA1: Arithmetic Exception Handling**
+* **PA2:  Modular Testing in Sparse Matrix Solvers**
+* **H1: Differentiation in Local Analysis**
+* **H2: Applying the Wilkinson Principle to Sparse Matrix Computation**
+* **PA3:  Parameter Extraction from Least-Squares Fitting**
+* **PA4:  Simple Ordinary Differential Equation Solver**
+* **PA5:  Extended ODE Solver**
 
 
 ## Author
@@ -19,4 +19,4 @@ Following assignments have been completed:
 
 ## Acknowledgments
 
-* Prof. Edwin Kan for providing the assignment details and continuous guidance.
+* Prof. Edwin Kan for providing the theoretical details and continuous guidance.
