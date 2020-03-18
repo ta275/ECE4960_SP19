@@ -1,4 +1,4 @@
-# Computational and Software Engineering
+# Scientific Computing in Python
 
 This directory contains the implementation of a sparse matrix representation data structure, numerical methods for calculating derivatives and definite integrals, numerical linear-equation solvers based on the Newton-Rhapson method, least-squares fitting, and ordinary-differential equation solvers to simulate electrical circuits.
 
