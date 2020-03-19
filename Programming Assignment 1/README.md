@@ -11,7 +11,7 @@ Computational schemes to observe the following exception handling rules are impl
 * Signed zero
 * Floating-point gradual underflow
 
-Additionally, a [spigot algorithm](https://en.wikipedia.org/wiki/Spigot_algorithm) is implemented to calculate &#960 with **arbitrary digits** of precision. The first 30 digits after the decimal point are reported.
+Additionally, a [spigot algorithm](https://en.wikipedia.org/wiki/Spigot_algorithm) is implemented to calculate $\Pi$ with **arbitrary digits** of precision. The first 30 digits after the decimal point are reported.
 
 A short IEEE compliance report is generated to determine whether the platform obeys the IEEE 754 standard. A maximum of 10 violations is listed in this compliance report. A detailed log of the behavior for every rule is generated in a separate file.
 
