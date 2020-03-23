@@ -1,7 +1,11 @@
-#ECE 4960 Spring 2019
-#Programming Assignment 1
-#Author: Tejas Advait (ta275)
-#Date of Creation: Feb 12 2019
+"""
+ * main.py
+ *
+ * Date Created: 12-Feb-2019
+ * Author : Tejas Advait (ta275)
+ *
+ * Description: Generate compliance reports for Python 3.7
+ """
 
 
 import integer_exception
@@ -12,11 +16,12 @@ import spigot_pi
 from common import *
 import queue
 import random
+import os
 
 
-f = open("detailed_log.txt","w")
-ieee = open("ieee_compliance_report.txt","w")
-p = open("digits_of_pi.txt","w")
+f = open(os.path.join("REPORTS", "detailed_log.txt"),"w")
+ieee = open(os.path.join("REPORTS","ieee_compliance_report.txt"), "w")
+p = open(os.path.join("REPORTS", "digits_of_pi.txt") ,"w")
 
 iq = []
 

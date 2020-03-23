@@ -1,11 +1,16 @@
-#ECE 4960 Spring 2019
-#Programming Assignment 1
-#Digits of Pi in Python 3.7.0
-#Author: Tejas Advait (ta275)
-#Date of Creation: Feb 12 2019
+"""
+ * integer_exception.py
+ *
+ * Date Created: 12-Feb-2019
+ * Author : Tejas Advait (ta275)
+ *
+ * Description: Digits of Pi upto n (can be arbitrarily large) decimal places in Python 3.7
+ """
 
-#Based on "Unbounded Spigot Algorithms for the Digits of Pi" by Jeremy Gibbons
+
+#The implementation is based on "Unbounded Spigot Algorithms for the Digits of Pi" by Jeremy Gibbons
 #The paper can be found at http://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/spigot.pdf
+
 from common import *
 
 pi = "3.141592653589793238462643383279"

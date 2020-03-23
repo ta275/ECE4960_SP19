@@ -1,9 +1,11 @@
-#ECE 4960 Spring 2019
-#Programming Assignment 1
-#Floating-Point operations of inf, ninf, nan in Python 3.7.0
-#Author: Tejas Advait (ta275)
-#Date of Creation: Feb 12 2019
-
+"""
+ * float_inf_ninf_nan.py
+ *
+ * Date Created: 12-Feb-2019
+ * Author : Tejas Advait (ta275)
+ *
+ * Description: Floating-Point operations of inf, ninf, nan in Python 3.7
+ """
 
 from common import *
 

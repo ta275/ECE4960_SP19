@@ -1,8 +1,11 @@
-#ECE 4960 Spring 2019
-#Programming Assignment 1
-#Floating-Point Overflow and Gradual Underflow in Python 3.7.0
-#Author: Tejas Advait (ta275)
-#Date of Creation: Feb 12 2019
+"""
+ * float_under_over.py
+ *
+ * Date Created: 12-Feb-2019
+ * Author : Tejas Advait (ta275)
+ *
+ * Description: Floating-Point Overflow and Gradual Underflow in Python 3.7
+ """
 
 import math
 from common import *

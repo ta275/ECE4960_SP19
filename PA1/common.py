@@ -1,7 +1,11 @@
-#ECE 4960 Spring 2019
-#Programming Assignment 1
-#Author: Tejas Advait (ta275)
-#Date of Creation: Feb 12 2019
+"""
+ * common.py
+ *
+ * Date Created: 12-Feb-2019
+ * Author : Tejas Advait (ta275)
+ *
+ * Description: Common functions to be used by other scripts
+ """
 
 import math
 import queue
