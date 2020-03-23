@@ -2,15 +2,15 @@
 
 ##Introduction
 
-Welcome to my repository on Scientific Computing in Python. This repository is still underconstruction so I apologize for any incomplete documentation, although all of the code is written present in the sub-directories.
+Welcome to my repository on Scientific Computing in Python. This repository is still under construction so I apologize for any incomplete documentation, although all of the code is complete and present in the sub-directories.
 
 My final goal is very ambitious: I want to see this repository to be able to justify the use of Python for scientific research, which is still dominated by Fortran and MATLAB.
 
 To achieve this goal I aim to do the following two main things:
 
-** Theoretical Concepts: I aim to explain some fundamental and intermediate concepts of scientific computing such as error analysis, digital representation of real numbers, numerical differentiation and integration, iterative and direct matrix solvers, least-squares, and ODE solvers.
+** Theoretical Concepts: I wish to explain some fundamental and intermediate concepts of scientific computing such as error analysis, digital representation of real numbers, numerical differentiation and integration, iterative and direct matrix solvers, least-squares, and ODE solvers.
 
-** Software: Along with the theoretical concepts, I want to emphasize good coding practices and extensive software development. I aim to instill modular thinking among the readers. The most fundamental skill possessed by any good programmer is the ability to break down large problems into smaller sub-problems, preferably independent of each other. Once that is achieved, it can be carried out in Python efficiently and swiftly, and after a point, almost effortlessly! 
+** Software: Along with the theoretical concepts, I want to emphasize good coding practices and extensive software development. I aim to instill modular thinking among the readers. The most fundamental skill possessed by any good programmer is the ability to break down large problems into smaller sub-problems, preferably independent of each other. We will see how Python can be used to achieve modularity efficiently and swiftly, and after a point, almost effortlessly! 
 
 
 ## Why Python?
@@ -26,6 +26,8 @@ I encourage you to read [this](https://developer.ibm.com/dwblog/2018/use-python-
 ## What is already here?
 
 This repository contains the implementation of a sparse matrix data structure, numerical methods for calculating derivatives and definite integrals, numerical linear-equation solvers based on the Newton-Rhapson method, least-squares fitting, and ordinary-differential equation solvers to simulate electrical circuits.
+
+You are free to use any code as long as you acknowledge the source.
 
 Python 3.7 is used as the primary programming language for these implementations. You can find a "reports" directory in each of the following sub-directories which contains all the generated reports and plots.
 
@@ -53,4 +55,4 @@ Python 3.7 is used as the primary programming language for these implementations
 
 ## Acknowledgments
 
-* Prof. Edwin Kan for providing the theoretical details and continuous guidance.
+* Prof. Edwin Kan at Cornell University for providing the theoretical details and continuous guidance.
