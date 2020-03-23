@@ -1,8 +1,33 @@
 # Scientific Computing in Python
 
-This directory contains the implementation of a sparse matrix representation data structure, numerical methods for calculating derivatives and definite integrals, numerical linear-equation solvers based on the Newton-Rhapson method, least-squares fitting, and ordinary-differential equation solvers to simulate electrical circuits.
+##Introduction
 
-Python 3.7 is used as the primary programming language for these implementations.
+Welcome to my repository on Scientific Computing in Python. This repository is still underconstruction so I apologize for any incomplete documentation, although all of the code is written present in the sub-directories.
+
+My final goal is very ambitious: I want to see this repository to be able to justify the use of Python for scientific research, which is still dominated by Fortran and MATLAB.
+
+To achieve this goal I aim to do the following two main things:
+
+** Theoretical Concepts: I aim to explain some fundamental and intermediate concepts of scientific computing such as error analysis, digital representation of real numbers, numerical differentiation and integration, iterative and direct matrix solvers, least-squares, and ODE solvers.
+
+** Software: Along with the theoretical concepts, I want to emphasize good coding practices and extensive software development. I aim to instill modular thinking among the readers. The most fundamental skill possessed by any good programmer is the ability to break down large problems into smaller sub-problems, preferably independent of each other. Once that is achieved, it can be carried out in Python efficiently and swiftly, and after a point, almost effortlessly! 
+
+
+## Why Python?
+
+Python was chosen as the language for this repository due to its ever-increasing popularity, ease of use, versatality, and existence of packages such as NumPy, SciPy, and Matplotlib - which makes it ideal for Scientific Computing applications.
+
+Compared to MATLAB, Python is completely free and there are many open-source packages available which provide similar functionality as MATLAB packages. I believe Python wrapped around C/C++ is the future of Scientific Computing.
+
+If you follow the code closely, you will observe highly modularized design, and strong object-oriented programming done in Python. The code could be a good starting point for novice (and even some advanced) Python users to learn OOP. Although Python lacks certain OOP features such as *encapsulation*, it does possess all the necessary tools required to develop highly modularized software which is easy to write, and simple to understand.
+
+I encourage you to read [this](https://developer.ibm.com/dwblog/2018/use-python-for-scientific-research/) article by [Vinay Rao](https://developer.ibm.com/author/vinay.rao/)from the IBM developerWorks blog for further motivation for using Python for scientific computing.
+
+## What is already here?
+
+This repository contains the implementation of a sparse matrix data structure, numerical methods for calculating derivatives and definite integrals, numerical linear-equation solvers based on the Newton-Rhapson method, least-squares fitting, and ordinary-differential equation solvers to simulate electrical circuits.
+
+Python 3.7 is used as the primary programming language for these implementations. You can find a "reports" directory in each of the following sub-directories which contains all the generated reports and plots.
 
 * **PA1: Arithmetic Exception Handling:** This directory contains the implementation of a utility program that can observe and validate the exception handling of the integer and floating-point arithmetic in Python 3.7. The exception is validated against IEEE 754 standard for integer and floating-point representation by binary bits.
 
