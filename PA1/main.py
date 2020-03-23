@@ -19,9 +19,9 @@ import random
 import os
 
 
-f = open(os.path.join("REPORTS", "detailed_log.txt"),"w")
-ieee = open(os.path.join("REPORTS","ieee_compliance_report.txt"), "w")
-p = open(os.path.join("REPORTS", "digits_of_pi.txt") ,"w")
+f = open(os.path.join("reports", "detailed_log.txt"),"w")
+ieee = open(os.path.join("reports","ieee_compliance_report.txt"), "w")
+p = open(os.path.join("reports", "digits_of_pi.txt") ,"w")
 
 iq = []
 

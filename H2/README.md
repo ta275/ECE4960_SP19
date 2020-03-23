@@ -16,4 +16,4 @@ The memory usage and runtime for Part II is reported.
 
 ## Acknowledgments
 
-* Prof. Edwin Kan for providing the assignment details and continuous guidance.
+* Prof. Edwin Kan for providing the theoretical details and guidance.

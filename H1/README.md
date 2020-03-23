@@ -1,4 +1,4 @@
-# Homework 2: Differentiation in Local Analysis
+# H1: Differentiation in Local Analysis
 
 This directory contains the implementation of differentiation of a quadratic function and a cubic function.
 
@@ -16,4 +16,4 @@ A pdf report tabulating all the observations is generated.
 
 ## Acknowledgments
 
-* Prof. Edwin Kan for providing the assignment details and continuous guidance.
+* Prof. Edwin Kan for providing the theoretical details and guidance.

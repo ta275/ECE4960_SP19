@@ -19,6 +19,15 @@ A detailed log of the behavior for every rule is generated in a separate file.
 
 These reports can be found in the REPORTS directory.
 
+## Files
+
+* REPORTS - Directory containing all the reports
+* common.py - Common functions to be used by other scripts
+* float_inf_ninf_nan.py - Floating-Point operations of inf, ninf, nan in Python 3.7
+* integer_exception.py - Integer exceptions in Python 3.7
+* main.py - Generate compliance reports for Python 3.7
+* signed_zero.py - Signed zero handling in Python 3.7
+* **spigot_pi.py - Digits of Pi upto n (can be arbitrarily large) decimal places in Python 3.7**
 
 ## Usage
 

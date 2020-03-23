@@ -10,7 +10,6 @@
 import math
 from common import *
 
-inf 
 
 #Floating-point overflow check using factorials
 def overflow_fac():
