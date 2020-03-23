@@ -1,6 +1,6 @@
 # Scientific Computing in Python
 
-##Introduction
+## Introduction
 
 Welcome to my repository on Scientific Computing in Python. This repository is still under construction so I apologize for any incomplete documentation, although all of the code is complete and present in the sub-directories.
 
