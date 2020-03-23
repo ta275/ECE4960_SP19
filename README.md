@@ -19,7 +19,7 @@ Python was chosen as the language for this repository due to its ever-increasing
 
 Compared to MATLAB, Python is completely free and there are many open-source packages available which provide similar functionality as MATLAB packages. I believe Python wrapped around C/C++ is the future of Scientific Computing.
 
-If you follow the code closely, you will observe highly modularized design, and strong object-oriented programming done in Python. The code could be a good starting point for novice (and even some advanced) Python users to learn OOP. Although Python lacks certain OOP features such as *encapsulation*, it does possess all the necessary tools required to develop highly modularized software which is easy to write, and simple to understand.
+If you follow the code closely, you will observe highly modularized design, and strong object-oriented programming done in Python. The code could be a good starting point for novice (and even some advanced) Python users to learn OOP. Although Python lacks certain OOP features such as *encapsulation*, it does possess all the necessary tools required to develop highly modularized software which is easy to write and simple to understand.
 
 I encourage you to read [this](https://developer.ibm.com/dwblog/2018/use-python-for-scientific-research/) article by [Vinay Rao](https://developer.ibm.com/author/vinay.rao/) from the IBM developerWorks blog for further motivation for using Python for scientific computing.
 
