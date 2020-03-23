@@ -10,7 +10,7 @@ Result of 10//0: integer division or modulo by zero   *****IEEE VIOLATION*****
 Floating-Point Overflow and Underflow
 ################################################################################
 
-Result of 171! : (34, 'Result too large')   *****IEEE VIOLATION*****
+Result of 171! : (34, 'Numerical result out of range')   *****IEEE VIOLATION*****
 Result of 171! (in floating-point) : nan
 Result of 1.2345678909876543e-307 / 10  : 1.234567890987654e-308
 Result of 1.234567890987654e-308 / 10  : 1.23456789098765e-309

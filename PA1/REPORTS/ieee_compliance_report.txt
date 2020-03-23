@@ -7,13 +7,13 @@ IEEE Compliance Report
 
 10 Violations Reported Below. Look at the detailed log file for more details. 
 
-1. Result of 1.2345678909876542e-303 / 0.0 : float division by zero
-2. Result of sin(1.23456789012345*0.0)/0.0 : float division by zero
-3. Result of 1.2345678909876542e-303 / 0.0 : float division by zero
-4. Result of log(0.0) : math domain error
-5. Result of log(-1.23456789e-315) : math domain error
-6. Result of log(0.0) : math domain error
-7. Result of sin(0.0) / 0.0 : float division by zero
-8. Result of log(-1.2345679e-316) : math domain error
-9. Result of sin(-0.0) / -0.0 : float division by zero
-10. Result of log(-1.23456789012346e-310) : math domain error
+1. Result of 0.000000 / 0.000000 : float division by zero
+2. Result of log(-1.23456789e-314) : math domain error
+3. Result of log(-1.234568e-317) : math domain error
+4. Result of log(-1.23456789e-315) : math domain error
+5. Result of sin(-0.0) / |-0.0| : float division by zero
+6. Result of 0.000000 / 0.000000 : float division by zero
+7. Result of log(-1.2345678901234499e-307) : math domain error
+8. Result of sin(0.0) / 0.0 : float division by zero
+9. Result of sin(1.23456789012345*0.0)/0.0 : float division by zero
+10. Result of sin(0.0) / 0.0 : float division by zero

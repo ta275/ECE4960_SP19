@@ -1,6 +1,6 @@
 # PA1: Arithmetic Exception Handling
 
-This directory contains the implementation of a utility program that can observe and validate the exception handling of the integer and floating-point arithmetic in Python 3.7.0. The exception is validated against IEEE 754 standard for integer and floating-point representation by binary bits.
+This directory contains the implementation of a utility program that can observe and validate the exception handling of the integer and floating-point arithmetic in Python 3.7. The exception is validated against IEEE 754 standard for integer and floating-point representation by binary bits.
 
 Computational schemes to observe the following exception-handling rules are implemented:
 * Integer overflow
@@ -23,7 +23,11 @@ These reports can be found in the REPORTS directory.
 ## Usage
 
 
-Download all the source code and run the main.py script in Python 3.7 to generate the reports in the REPORTS directory.
+Download all the source code and run the main.py script in Python 3.7.6 to generate the reports in the REPORTS directory.
+
+Feel free to use any other source code from any other file, as long as you acknowledge me.
+
+I have tested the source code on Python 3.7 and Python 3.8, but it should work on any Python 3 platform.
 
 
 ## Author
