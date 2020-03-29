@@ -8,9 +8,9 @@ My final goal is very ambitious: I want to see this repository to be able to jus
 
 To achieve this goal I aim to do the following two main things:
 
-** Theoretical Concepts: I wish to explain some fundamental and intermediate concepts of scientific computing such as error analysis, digital representation of real numbers, numerical differentiation and integration, iterative and direct matrix solvers, least-squares, and ODE solvers.
+* Theoretical Concepts: I wish to explain some fundamental and intermediate concepts of scientific computing such as error analysis, digital representation of real numbers, numerical differentiation and integration, iterative and direct matrix solvers, least-squares, and ODE solvers.
 
-** Software: Along with the theoretical concepts, I want to emphasize good coding practices and extensive software development. I aim to instill modular thinking among the readers. The most fundamental skill possessed by any good programmer is the ability to break down large problems into smaller sub-problems, preferably independent of each other. We will see how Python can be used to achieve modularity efficiently and swiftly, and after a point, almost effortlessly! 
+* Software: Along with the theoretical concepts, I want to emphasize good coding practices and extensive software development. I aim to instill modular thinking among the readers. The most fundamental skill possessed by any good programmer is the ability to break down large problems into smaller sub-problems, preferably independent of each other. We will see how Python can be used to achieve modularity efficiently and swiftly, and after a point, almost effortlessly! 
 
 
 ## Why Python?
