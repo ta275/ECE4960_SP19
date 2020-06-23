@@ -4,7 +4,7 @@
 
 Welcome to my repository on Scientific Computing in Python. This repository is still under construction so I apologize for any incomplete documentation, although all of the code is complete and present in the sub-directories.
 
-My final goal is very ambitious: I want to see this repository to be able to justify the use of Python for scientific research, which is still dominated by Fortran and MATLAB.
+My final goal is a bit ambitious: I want to see this repository to be able to justify the use of Python for scientific research, which is still dominated by Fortran and MATLAB.
 
 To achieve this goal I aim to do the following two main things:
 
@@ -27,7 +27,7 @@ I encourage you to read [this](https://developer.ibm.com/dwblog/2018/use-python-
 
 This repository contains the implementation of a sparse matrix data structure, numerical methods for calculating derivatives and definite integrals, numerical linear-equation solvers based on the Newton-Rhapson method, least-squares fitting, and ordinary-differential equation solvers to simulate electrical circuits.
 
-You are free to use any code as long as you acknowledge the source.
+You are free to use any code with appropriate acknowledgement.
 
 Python 3.7 is used as the primary programming language for these implementations. You can find a "reports" directory in each of the following sub-directories which contains all the generated reports and plots.
 
